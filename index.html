@@ -14,24 +14,31 @@
   --code: #f3f4f6;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 main {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 20px 16px 64px;
 }
 h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 12px; }
 h1 { font-size: 1.9rem; margin-top: 8px; }
-h2 { font-size: 1.45rem; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); }
+h2 {
+  font-size: 1.45rem;
+  margin-top: 42px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
 h3 { font-size: 1.15rem; margin-top: 24px; }
 h4 { font-size: 1rem; margin-top: 18px; }
 p, li { margin: 0 0 10px; }
 small, .muted { color: var(--muted); }
+
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -51,9 +58,27 @@ small, .muted { color: var(--muted); }
 .answer {
   background: #fafafa;
   border-left: 4px solid #999;
-  padding: 10px 12px;
+  padding: 12px;
   margin: 12px 0;
 }
+.statement {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid #bbb;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+.reading-note {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0 18px;
+}
+.steps { margin-top: 12px; }
+.steps p { margin-bottom: 10px; }
+
 nav {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -66,9 +91,11 @@ nav ul {
   padding-left: 20px;
   margin: 8px 0 0;
 }
-.section-gap { margin-top: 18px; }
-hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
-
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 22px 0;
+}
 .pdf-block {
   margin: 10px 0 18px;
   border: 1px solid var(--line);
@@ -103,8 +130,8 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
 <body>
 <main>
   <h1>Provas Resolvidas de Matemática Financeira</h1>
-  <p>Material simples, em ordem, com os conceitos primeiro e depois as provas, uma por uma.</p>
-  <p class="muted">As questões foram extraídas do PDF enviado pelo usuário. Quando o enunciado remete a exercícios de um livro e esse enunciado não aparece no PDF, a questão fica indicada como não resolvível apenas com este arquivo.</p>
+  <p>Material em sequência: primeiro os conceitos, depois as provas, uma por uma, com enunciado repetido, resolução comentada e indicação objetiva do que ler no livro.</p>
+  <p class="muted">Quando a prova manda resolver um exercício do livro, mas o enunciado desse exercício não aparece na prova, a questão fica indicada como não resolvível apenas com o material disponível.</p>
 
   <nav>
     <strong>Navegação</strong>
@@ -120,7 +147,6 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
       <li><a href="#p2018-04-11">11/04/2018</a></li>
       <li><a href="#p2018-09-18">18/09/2018</a></li>
       <li><a href="#p2023-05-04">04/05/2023</a></li>
-  
     </ul>
   </nav>
 
@@ -128,82 +154,55 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
 
   <div class="card">
     <h3>Capital</h3>
-    <p>É o valor inicial de uma aplicação, empréstimo ou operação financeira. Nas fórmulas, costuma aparecer como <strong>C</strong>.</p>
+    <p>É o valor inicial da operação. É o ponto de partida do cálculo. Nas fórmulas, costuma aparecer como <strong>C</strong>.</p>
   </div>
 
   <div class="card">
     <h3>Taxa de juros</h3>
-    <p>É o percentual cobrado ou pago em cada período. Nas fórmulas, aparece como <strong>i</strong>.</p>
-    <p>Exemplo: 24% ao ano significa 0,24 por ano. 2,5% ao mês significa 0,025 por mês.</p>
+    <p>É o percentual cobrado ou ganho em cada período. Quando a questão diz 32% a.a., isso quer dizer 32% ao ano. Quando diz 2,5% a.m., quer dizer 2,5% ao mês.</p>
+    <div class="formula">32% = 0,32 &nbsp;&nbsp; | &nbsp;&nbsp; 2,5% = 0,025</div>
   </div>
 
   <div class="card">
     <h3>Prazo</h3>
-    <p>É o tempo da operação. Nas fórmulas, aparece como <strong>t</strong>. O prazo precisa estar na mesma unidade da taxa.</p>
-    <p>Se a taxa está ao ano e o prazo está em meses, primeiro convertemos meses para anos.</p>
+    <p>É o tempo da operação. O ponto importante é: a unidade do tempo precisa combinar com a unidade da taxa. Se a taxa está ao ano, o tempo tem de ser convertido para anos.</p>
   </div>
 
   <div class="card">
     <h3>Juro simples</h3>
-    <p>No juro simples, os juros são calculados sempre sobre o capital inicial.</p>
+    <p>No juro simples, os juros são calculados sempre sobre o capital inicial. Então o crescimento é linear.</p>
     <div class="formula">J = C × i × t</div>
-    <p>Em seguida, o <strong>montante</strong> é:</p>
     <div class="formula">M = C + J</div>
   </div>
 
   <div class="card">
-    <h3>Montante</h3>
-    <p>É o valor final da operação: capital inicial mais juros.</p>
-  </div>
-
-  <div class="card">
     <h3>Juros compostos</h3>
-    <p>Nos juros compostos, cada período rende juros sobre o saldo acumulado do período anterior.</p>
+    <p>Nos juros compostos, cada período incide sobre o saldo que já cresceu. Por isso o crescimento deixa de ser linear e passa a ser acumulativo.</p>
     <div class="formula">M = C × (1 + i)<sup>t</sup></div>
-    <p>Quando queremos descobrir o capital inicial:</p>
     <div class="formula">C = M / (1 + i)<sup>t</sup></div>
   </div>
 
   <div class="card">
-    <h3>Valor nominal de um título</h3>
-    <p>É o valor que o título paga no vencimento. Costuma aparecer como <strong>N</strong>.</p>
+    <h3>Valor nominal, valor atual e valor futuro</h3>
+    <p>Valor nominal é o valor prometido para o vencimento. Valor atual é quanto esse valor vale antes do vencimento. Valor futuro é quanto um valor de hoje se transforma depois de passar pelo regime de juros.</p>
   </div>
 
   <div class="card">
-    <h3>Valor atual</h3>
-    <p>É o valor equivalente do título antes do vencimento.</p>
-    <p>Em juro simples racional:</p>
-    <div class="formula">VA = N / (1 + i × t)</div>
-  </div>
-
-  <div class="card">
-    <h3>Desconto comercial simples</h3>
-    <p>É um desconto calculado diretamente sobre o valor nominal do título.</p>
+    <h3>Desconto comercial e desconto bancário</h3>
+    <p>Desconto é a redução do valor de um título quando ele é antecipado. No desconto comercial simples, a conta é feita diretamente sobre o valor nominal. No desconto bancário, nestas provas, aparece o desconto comercial somado à taxa de serviço.</p>
     <div class="formula">D = N × i × t</div>
-    <p>O valor atual comercial é:</p>
     <div class="formula">A<sub>c</sub> = N - D = N × (1 - i × t)</div>
   </div>
 
   <div class="card">
-    <h3>Desconto bancário</h3>
-    <p>Nestas provas, o desconto bancário aparece como a soma do desconto comercial com uma taxa de serviço ou taxa administrativa cobrada pelo banco.</p>
-  </div>
-
-  <div class="card">
-    <h3>Taxa efetiva da operação</h3>
-    <p>É o custo real da antecipação em relação ao valor líquido recebido.</p>
-    <div class="formula">i<sub>efetiva, período</sub> = desconto total / valor líquido recebido</div>
-    <p>Neste material, quando a prova pede uma taxa efetiva anual e não especifica outro critério, foi usada a anualização simples proporcional ao prazo.</p>
-  </div>
-
-  <div class="card">
-    <h3>Fluxo de caixa</h3>
-    <p>É a sequência de entradas e saídas de dinheiro ao longo do tempo. Valor negativo é saída. Valor positivo é entrada.</p>
+    <h3>Equivalência de capitais</h3>
+    <p>Quando a questão pergunta quanto eu possuo hoje, ou daqui a um ano, o que estamos fazendo é trazer ou levar valores para uma mesma data, para poder comparar tudo corretamente.</p>
   </div>
 
   <div class="card">
     <h3>Taxa interna de retorno (TIR)</h3>
-    <p>É a taxa que faz o valor presente líquido do fluxo de caixa ser igual a zero. Em termos práticos, ela mede a rentabilidade implícita do fluxo.</p>
+    <p>A TIR é a taxa que zera o valor presente líquido do fluxo de caixa. Em linguagem simples: é a taxa que faz o valor de hoje das entradas ser exatamente igual ao valor da saída inicial.</p>
+    <div class="formula">0 = FC<sub>0</sub> + FC<sub>1</sub>/(1+i) + FC<sub>2</sub>/(1+i)<sup>2</sup> + ... + FC<sub>n</sub>/(1+i)<sup>n</sup></div>
   </div>
 
   <h2 id="p2014-09-23">Prova de 23/09/2014</h2>
@@ -215,46 +214,121 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-1.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <h4>a) R$ 2.500,00 a 32% a.a. por 7 meses</h4>
-    <p>Como a taxa está ao ano e o prazo está em meses, primeiro convertemos 7 meses para anos: 7/12.</p>
-    <div class="formula">J = 2500 × 0,32 × 7/12 = 466,67</div>
-    <div class="formula">M = 2500 + 466,67 = 2966,67</div>
-    <div class="answer"><strong>Resposta:</strong> juros = R$ 466,67; montante = R$ 2.966,67.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Calcular o juro simples e o montante de:
+      <br>a) R$ 2.500,00 a 32% a.a. por 7 meses.
+      <br>b) R$ 3.000,00 a 26,5% a.a. por 2 anos e 3 meses.
+      <br>c) R$ 2.500,00 a 2,5% a.m. por 3 bimestres.
+    </div>
 
-    <h4>b) R$ 3.000,00 a 26,5% a.a. por 2 anos e 3 meses</h4>
-    <p>2 anos e 3 meses = 2,25 anos.</p>
-    <div class="formula">J = 3000 × 0,265 × 2,25 = 1788,75</div>
-    <div class="formula">M = 3000 + 1788,75 = 4788,75</div>
-    <div class="answer"><strong>Resposta:</strong> juros = R$ 1.788,75; montante = R$ 4.788,75.</div>
+    <div class="steps">
+      <h4>a) R$ 2.500,00 a 32% a.a. por 7 meses</h4>
+      <p><strong>Primeiro passo:</strong> como a taxa está ao ano, precisamos escrever o prazo em anos. Sete meses correspondem a <strong>7/12 de ano</strong>.</p>
+      <div class="formula">t = 7/12</div>
+      <p><strong>Segundo passo:</strong> usamos a fórmula do juro simples.</p>
+      <div class="formula">J = C × i × t = 2500 × 0,32 × 7/12 = 466,67</div>
+      <p><strong>Terceiro passo:</strong> o montante é o capital inicial somado ao juro encontrado.</p>
+      <div class="formula">M = C + J = 2500 + 466,67 = 2966,67</div>
+      <div class="answer"><strong>Resposta:</strong> juro simples = <strong>R$ 466,67</strong> e montante = <strong>R$ 2.966,67</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, cap. 1, seção “Cálculo do juro”, p. 6; seção “Montante”, p. 9; e, para a conversão do prazo, seção “Períodos não-inteiros”, p. 13.</div>
 
-    <h4>c) R$ 2.500,00 a 2,5% a.m. por 3 bimestres</h4>
-    <p>Um bimestre tem 2 meses. Então 3 bimestres = 6 meses.</p>
-    <div class="formula">J = 2500 × 0,025 × 6 = 375,00</div>
-    <div class="formula">M = 2500 + 375,00 = 2875,00</div>
-    <div class="answer"><strong>Resposta:</strong> juros = R$ 375,00; montante = R$ 2.875,00.</div>
+      <h4>b) R$ 3.000,00 a 26,5% a.a. por 2 anos e 3 meses</h4>
+      <p><strong>Primeiro passo:</strong> converter 2 anos e 3 meses para uma única unidade. Como 3 meses são 3/12 de ano, o prazo total é <strong>2,25 anos</strong>.</p>
+      <div class="formula">t = 2 + 3/12 = 2,25</div>
+      <p><strong>Segundo passo:</strong> aplicar a fórmula do juro simples.</p>
+      <div class="formula">J = 3000 × 0,265 × 2,25 = 1788,75</div>
+      <p><strong>Terceiro passo:</strong> calcular o montante.</p>
+      <div class="formula">M = 3000 + 1788,75 = 4788,75</div>
+      <div class="answer"><strong>Resposta:</strong> juro simples = <strong>R$ 1.788,75</strong> e montante = <strong>R$ 4.788,75</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, cap. 1, seção “Cálculo do juro”, p. 6; seção “Montante”, p. 9; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>c) R$ 2.500,00 a 2,5% a.m. por 3 bimestres</h4>
+      <p><strong>Primeiro passo:</strong> a taxa está ao mês, então o tempo também deve estar em meses. Um bimestre tem 2 meses. Logo, 3 bimestres = <strong>6 meses</strong>.</p>
+      <div class="formula">t = 6</div>
+      <p><strong>Segundo passo:</strong> calcular o juro simples.</p>
+      <div class="formula">J = 2500 × 0,025 × 6 = 375,00</div>
+      <p><strong>Terceiro passo:</strong> somar o juro ao capital.</p>
+      <div class="formula">M = 2500 + 375,00 = 2875,00</div>
+      <div class="answer"><strong>Resposta:</strong> juro simples = <strong>R$ 375,00</strong> e montante = <strong>R$ 2.875,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, cap. 1, seção “Cálculo do juro”, p. 6; seção “Montante”, p. 9; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <p>Valor nominal de R$ 16.000,00, taxa de juros de 28% a.a., prazo de 7 meses e taxa de serviço de 3,5%.</p>
-    <div class="formula">Desconto comercial = 16000 × 0,28 × 7/12 = 2613,33</div>
-    <div class="formula">Taxa de serviço = 16000 × 0,035 = 560,00</div>
-    <div class="formula">Desconto bancário total = 2613,33 + 560,00 = 3173,33</div>
-    <div class="formula">Valor líquido = 16000 - 3173,33 = 12826,67</div>
-    <div class="formula">Taxa efetiva do período = 3173,33 / 12826,67 = 24,74%</div>
-    <div class="formula">Taxa efetiva anual simples = 42,41%</div>
-    <div class="answer"><strong>Resposta:</strong> desconto bancário = R$ 3.173,33; valor líquido = R$ 12.826,67; taxa efetiva do período = 24,74%; taxa efetiva anual simples = 42,41%.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> O banco Alfa cobra 3,5% de taxa de serviço e como taxa de juros emprega 28% a.a. Qual é o desconto bancário de um título com valor nominal de R$ 16.000,00 e vencimento a 7 meses? Qual é a taxa efetiva?
+    </div>
+
+    <div class="steps">
+      <p><strong>Primeiro passo:</strong> calcular o desconto comercial simples sobre o valor nominal do título. O prazo de 7 meses deve ser escrito em anos, porque a taxa está ao ano.</p>
+      <div class="formula">D<sub>c</sub> = 16000 × 0,28 × 7/12 = 2613,33</div>
+
+      <p><strong>Segundo passo:</strong> calcular a taxa de serviço cobrada pelo banco.</p>
+      <div class="formula">TS = 16000 × 0,035 = 560,00</div>
+
+      <p><strong>Terceiro passo:</strong> somar os dois descontos, porque o enunciado pede o <strong>desconto bancário</strong>, isto é, o custo total da antecipação.</p>
+      <div class="formula">D<sub>b</sub> = 2613,33 + 560,00 = 3173,33</div>
+
+      <p><strong>Quarto passo:</strong> descobrir quanto o cliente realmente recebe.</p>
+      <div class="formula">VL = 16000 - 3173,33 = 12826,67</div>
+
+      <p><strong>Quinto passo:</strong> calcular a taxa efetiva da operação sobre o valor líquido recebido.</p>
+      <div class="formula">i<sub>ef,p</sub> = 3173,33 / 12826,67 = 24,74%</div>
+
+      <p><strong>Sexto passo:</strong> como a prova pede a taxa efetiva e não detalha outra convenção, podemos anualizar proporcionalmente:</p>
+      <div class="formula">i<sub>ef,a.a.</sub> = 24,74% ÷ (7/12) = 42,41% a.a.</div>
+
+      <div class="answer"><strong>Resposta:</strong> desconto bancário = <strong>R$ 3.173,33</strong>; valor líquido recebido = <strong>R$ 12.826,67</strong>; taxa efetiva do período = <strong>24,74%</strong>; taxa efetiva anual simples = <strong>42,41% a.a.</strong></div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46; seção “Desconto bancário”, p. 48; e seção “Taxa de juros efetiva”, p. 50.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <p>A pessoa aplicou R$ 6.050,00 a 2,5% ao mês e quer chegar a R$ 9.500,00. Aqui usamos juros compostos.</p>
-    <div class="formula">9500 = 6050 × (1,025)<sup>t</sup></div>
-    <div class="formula">t = ln(9500/6050) / ln(1,025) = 18,27 meses</div>
-    <div class="answer"><strong>Resposta:</strong> aproximadamente 18,27 meses.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Com a finalidade de comprar uma moto no valor de R$ 9.500,00, uma pessoa aplica R$ 6.050,00 à taxa de 2,5% a.m. Quanto tempo levou para obter o valor da moto?
+    </div>
+
+    <div class="steps">
+      <p><strong>Primeiro passo:</strong> identificar que esta é uma questão de juros compostos, porque o valor aplicado cresce ao longo do tempo de forma acumulada.</p>
+      <div class="formula">9500 = 6050 × (1,025)<sup>t</sup></div>
+
+      <p><strong>Segundo passo:</strong> isolar a potência.</p>
+      <div class="formula">(1,025)<sup>t</sup> = 9500 / 6050 ≈ 1,57025</div>
+
+      <p><strong>Terceiro passo:</strong> para encontrar o expoente, usamos logaritmos.</p>
+      <div class="formula">t = ln(9500/6050) / ln(1,025) ≈ 18,27</div>
+
+      <p>Como a taxa estava ao mês, esse resultado está em <strong>meses</strong>.</p>
+
+      <div class="answer"><strong>Resposta:</strong> o valor da moto foi atingido em aproximadamente <strong>18,27 meses</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, cap. 3, seção “Montante”, p. 82; seção “Valor atual e valor nominal”, p. 85; e, para o uso de expoente não inteiro, o Apêndice “Potenciação a expoentes fracionários”, p. 128.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p>Fluxo de caixa: -50000, 15000, 25000, 30000.</p>
-    <p>A TIR é a taxa que zera o valor presente líquido desse fluxo.</p>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 16,79% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -50.000; ano 1 = 15.000; ano 2 = 25.000; ano 3 = 30.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <p><strong>Primeiro passo:</strong> escrever a equação do valor presente líquido igual a zero. Isso é justamente a definição da TIR.</p>
+      <div class="formula">0 = -50000 + 15000/(1+i) + 25000/(1+i)<sup>2</sup> + 30000/(1+i)<sup>3</sup></div>
+
+      <p><strong>Segundo passo:</strong> testar taxas próximas até encontrar duas que mudem o sinal do VPL. Isso mostra onde está a raiz.</p>
+      <div class="formula">VPL(16%) ≈ +729,84</div>
+      <div class="formula">VPL(17%) ≈ -185,53</div>
+
+      <p>Como em 16% o VPL ainda é positivo e em 17% ele ficou negativo, a taxa de retorno está entre 16% e 17%.</p>
+
+      <p><strong>Terceiro passo:</strong> fazer uma aproximação por interpolação linear.</p>
+      <div class="formula">i ≈ 16% + [729,84 / (729,84 + 185,53)] × 1%</div>
+      <div class="formula">i ≈ 16,79%</div>
+
+      <p><strong>Interpretação:</strong> essa é a taxa que faz o valor atual das entradas ser igual ao valor da saída inicial de R$ 50.000,00.</p>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>16,79% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2012-12-14">Prova de 14/12/2012</h2>
@@ -266,33 +340,96 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-2.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <div class="formula">J = 1540 × 0,33 × 23/12 = 974,05</div>
-    <div class="formula">M = 1540 + 974,05 = 2514,05</div>
-    <div class="answer"><strong>Resposta:</strong> juros = R$ 974,05; montante = R$ 2.514,05.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Uma pessoa aplica R$ 1.540,00 pelo prazo de 23 meses, em instituição financeira que paga 33% a.a. de juros. Qual é o montante auferido? (juros simples)
+    </div>
+
+    <div class="steps">
+      <p>Como a taxa está ao ano, o prazo de 23 meses deve ser convertido para anos.</p>
+      <div class="formula">t = 23/12</div>
+      <p>Agora calculamos o juro simples:</p>
+      <div class="formula">J = 1540 × 0,33 × 23/12 = 974,05</div>
+      <p>Depois somamos o juro ao capital inicial:</p>
+      <div class="formula">M = 1540 + 974,05 = 2514,05</div>
+      <div class="answer"><strong>Resposta:</strong> montante = <strong>R$ 2.514,05</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Cálculo do juro”, p. 6; seção “Montante”, p. 9; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <p>O título é resgatado 9 meses antes do vencimento. Então o desconto usa prazo de 9 meses.</p>
-    <div class="formula">D = 67000 × 0,25 × 9/12 = 12562,50</div>
-    <div class="formula">A<sub>c</sub> = 67000 - 12562,50 = 54437,50</div>
-    <div class="answer"><strong>Resposta:</strong> desconto = R$ 12.562,50; valor atual comercial = R$ 54.437,50.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tenho um título no valor nominal de R$ 67.000,00 que vai vencer daqui a 19 meses. Supondo a taxa de mercado de 25% a.a., se eu resgatar esse título 9 meses antes do vencimento, qual é o desconto e o valor atual comercial? (juros simples)
+    </div>
+
+    <div class="steps">
+      <p>O que interessa aqui não é o prazo até hoje, mas o prazo da <strong>antecipação</strong>. O título será resgatado 9 meses antes do vencimento, então o desconto usa <strong>9 meses</strong>.</p>
+      <div class="formula">D = 67000 × 0,25 × 9/12 = 12562,50</div>
+      <p>O valor atual comercial é o valor nominal menos o desconto.</p>
+      <div class="formula">A<sub>c</sub> = 67000 - 12562,50 = 54437,50</div>
+      <div class="answer"><strong>Resposta:</strong> desconto = <strong>R$ 12.562,50</strong> e valor atual comercial = <strong>R$ 54.437,50</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46; e, para a ideia de valor do título antes do vencimento, Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16, especialmente “Valor atual”, p. 19.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 1540 × (1,33)<sup>23/12</sup> = 2660,13</div>
-    <div class="answer"><strong>Resposta:</strong> montante = R$ 2.660,13.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Certa pessoa aplica R$ 1.540,00 pelo prazo de 23 meses, em instituição financeira que paga 33% a.a. de juros. Qual é o montante auferido? (juros compostos)
+    </div>
+
+    <div class="steps">
+      <p>Agora a mesma operação passa para juros compostos. Isso muda totalmente a conta, porque o crescimento deixa de ser linear.</p>
+      <div class="formula">M = 1540 × (1,33)<sup>23/12</sup></div>
+      <div class="formula">M ≈ 2660,13</div>
+      <div class="answer"><strong>Resposta:</strong> montante = <strong>R$ 2.660,13</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p>Somamos os valores equivalentes de tudo em uma mesma data.</p>
-    <p><strong>Hoje:</strong> o dinheiro em mãos já está na data zero; os outros dois valores futuros são trazidos para hoje por juros compostos.</p>
-    <div class="formula">V<sub>0</sub> = 5000 + 12500/(1,153)<sup>7/12</sup> + 20000/(1,153)<sup>15/12</sup> = 33243,38</div>
-    <p><strong>Daqui a um ano:</strong> os 5000 são capitalizados por 1 ano; o título que vence em 7 meses é levado 5 meses para frente; a nota que vence em 15 meses é trazida 3 meses para trás.</p>
-    <div class="formula">V<sub>1</sub> = 5000×1,153 + 12500×(1,153)<sup>5/12</sup> + 20000/(1,153)<sup>3/12</sup> = 38329,61</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 33.243,38; daqui a um ano = R$ 38.329,61.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Possuo R$ 5.000,00 hoje, um título de R$ 12.500,00 que vence daqui a 7 meses e uma nota promissória que vai vencer daqui a 15 meses no valor de R$ 20.000,00. Se a taxa de mercado for 15,3% a.a., quanto possuo hoje? E daqui a um ano? (juros compostos)
+    </div>
+
+    <div class="steps">
+      <p><strong>Parte A: quanto possuo hoje.</strong> Precisamos trazer tudo para a data de hoje. Os R$ 5.000,00 já estão hoje. Os outros dois valores são futuros, então precisam ser descontados.</p>
+      <div class="formula">V<sub>0</sub> = 5000 + 12500/(1,153)<sup>7/12</sup> + 20000/(1,153)<sup>15/12</sup></div>
+      <div class="formula">V<sub>0</sub> ≈ 33243,38</div>
+
+      <p><strong>Parte B: quanto possuo daqui a um ano.</strong> Agora escolhemos a data focal em 1 ano. Então:
+      <br>• os R$ 5.000,00 crescem por 12 meses;
+      <br>• o título de R$ 12.500,00 vence em 7 meses, então da data de vencimento até 1 ano faltam 5 meses, e ele é capitalizado por esse período;
+      <br>• a nota promissória de R$ 20.000,00 vence em 15 meses, então para a data de 1 ano ainda faltam 3 meses, logo ela é descontada por 3 meses.</p>
+
+      <div class="formula">V<sub>1</sub> = 5000×1,153 + 12500×(1,153)<sup>5/12</sup> + 20000/(1,153)<sup>3/12</sup></div>
+      <div class="formula">V<sub>1</sub> ≈ 38329,61</div>
+
+      <div class="answer"><strong>Resposta:</strong> hoje possui <strong>R$ 33.243,38</strong>; daqui a um ano possuirá <strong>R$ 38.329,61</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Data focal”, p. 132; seção “Equação de valor”, p. 133; e seção “Valor atual de um conjunto de capitais”, p. 137. Para a fórmula de desconto e capitalização em regime composto, veja também Parte II — Juros Compostos, seção “Valor atual e valor nominal”, p. 85.</div>
+    </div>
 
     <h3>Questão 5</h3>
-    <p>Fluxo: -40, 5, 7, 9, 11.</p>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ -7,51% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo: ano 0 = -40; ano 1 = 5; ano 2 = 7; ano 3 = 9; ano 4 = 11. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <p>Montamos a equação do VPL:</p>
+      <div class="formula">0 = -40 + 5/(1+i) + 7/(1+i)<sup>2</sup> + 9/(1+i)<sup>3</sup> + 11/(1+i)<sup>4</sup></div>
+
+      <p>Como o fluxo não paga muito acima do valor inicial, já esperamos uma taxa de retorno baixa, e neste caso ela fica negativa.</p>
+
+      <p>Testando duas taxas próximas:</p>
+      <div class="formula">VPL(-8%) ≈ +0,62</div>
+      <div class="formula">VPL(-7%) ≈ -0,64</div>
+
+      <p>Como houve mudança de sinal entre -8% e -7%, a TIR está nesse intervalo.</p>
+
+      <div class="formula">i ≈ -8% + [0,62 / (0,62 + 0,64)] × 1%</div>
+      <div class="formula">i ≈ -7,51%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>-7,51% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2016-07-11">Prova de 11/07/2016</h2>
@@ -304,31 +441,86 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-3.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Primeiro calculamos quanto a dívida valeria no vencimento, usando 5% ao mês durante 24 meses.</p>
-    <div class="formula">M = 20000 × (1,05)<sup>24</sup> = 64502,00</div>
-    <p>Como João quer quitar 6 meses antes, trazemos esse valor 6 meses para trás usando o valor do dinheiro na época: 44% ao ano em juro simples.</p>
-    <div class="formula">VA = 64502,00 / (1 + 0,44 × 6/12) = 52870,49</div>
-    <div class="answer"><strong>Resposta:</strong> Carlos poderia aceitar aproximadamente R$ 52.870,49.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> João emprestou R$ 20.000,00 de Carlos para pagá-lo após 2 anos. A taxa ajustada foi de 5% a.m. Quanto Carlos poderia aceitar, se 6 meses antes do vencimento da dívida João quisesse resgatá-la e se nesta época o dinheiro valesse 44% a.a.?
+    </div>
+
+    <div class="steps">
+      <p><strong>Primeiro passo:</strong> encontrar quanto a dívida valeria no vencimento, isto é, ao fim dos 24 meses, usando 5% ao mês.</p>
+      <div class="formula">M = 20000 × (1,05)<sup>24</sup> ≈ 64502,00</div>
+
+      <p><strong>Segundo passo:</strong> João quer quitar 6 meses antes do vencimento. Então precisamos trazer o valor de vencimento para essa nova data. Como o enunciado diz que nessa época o dinheiro valia 44% a.a., usamos essa taxa para descontar 6 meses.</p>
+      <div class="formula">VA = 64502,00 / (1 + 0,44 × 6/12)</div>
+      <div class="formula">VA ≈ 52870,49</div>
+
+      <p>A lógica é simples: pagar antes do vencimento significa pagar um valor equivalente naquela data anterior, não o valor cheio do vencimento.</p>
+
+      <div class="answer"><strong>Resposta:</strong> Carlos poderia aceitar aproximadamente <strong>R$ 52.870,49</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Valor atual e valor nominal”, p. 85; e, para a ideia de equivalência entre datas diferentes, Equivalência de Capitais, seção “Equação de valor”, p. 133.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">Desconto comercial = 25000 × 0,50 × 6/12 = 6250,00</div>
-    <div class="formula">Taxa de serviço = 25000 × 0,07 = 1750,00</div>
-    <div class="formula">Desconto total = 8000,00</div>
-    <div class="formula">Valor líquido = 25000 - 8000 = 17000,00</div>
-    <div class="formula">Taxa efetiva do período = 8000 / 17000 = 47,06%</div>
-    <div class="formula">Taxa efetiva anual simples = 94,12%</div>
-    <div class="answer"><strong>Resposta:</strong> valor líquido recebido = R$ 17.000,00; taxa efetiva do período = 47,06%; taxa efetiva anual simples = 94,12%.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Uma empresa vai ao banco para descontar uma duplicata de R$ 25.000,00 com vencimento a 6 meses. Se a taxa de juros for de 50% a.a. e a taxa de serviço de 7%, qual será o valor líquido recebido e a taxa efetiva paga pela empresa?
+    </div>
+
+    <div class="steps">
+      <p><strong>Primeiro passo:</strong> calcular o desconto comercial referente aos 6 meses.</p>
+      <div class="formula">D<sub>c</sub> = 25000 × 0,50 × 6/12 = 6250,00</div>
+
+      <p><strong>Segundo passo:</strong> calcular a taxa de serviço.</p>
+      <div class="formula">TS = 25000 × 0,07 = 1750,00</div>
+
+      <p><strong>Terceiro passo:</strong> achar o custo total da operação.</p>
+      <div class="formula">D<sub>b</sub> = 6250,00 + 1750,00 = 8000,00</div>
+
+      <p><strong>Quarto passo:</strong> calcular o valor líquido realmente recebido pela empresa.</p>
+      <div class="formula">VL = 25000 - 8000 = 17000,00</div>
+
+      <p><strong>Quinto passo:</strong> calcular a taxa efetiva sobre o que a empresa efetivamente recebeu.</p>
+      <div class="formula">i<sub>ef,p</sub> = 8000 / 17000 = 47,06%</div>
+      <div class="formula">i<sub>ef,a.a.</sub> = 47,06% ÷ (6/12) = 94,12% a.a.</div>
+
+      <div class="answer"><strong>Resposta:</strong> valor líquido recebido = <strong>R$ 17.000,00</strong>; taxa efetiva do período = <strong>47,06%</strong>; taxa efetiva anual simples = <strong>94,12% a.a.</strong></div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46; seção “Desconto bancário”, p. 48; e seção “Taxa de juros efetiva”, p. 50.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <p>Queremos descobrir quanto precisa ser aplicado hoje para virar R$ 13.000,00 em 36 meses, com 60% ao ano. Como 36 meses são 3 anos:</p>
-    <div class="formula">C = 13000 / (1,60)<sup>3</sup> = 3173,83</div>
-    <div class="answer"><strong>Resposta:</strong> deve aplicar hoje aproximadamente R$ 3.173,83.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Com a finalidade de comprar uma moto daqui a 36 meses, no valor de R$ 13.000,00, quanto uma pessoa deve aplicar hoje, se a taxa de juros for de 60% a.a.?
+    </div>
+
+    <div class="steps">
+      <p>O valor de R$ 13.000,00 é um valor futuro, porque será necessário daqui a 36 meses. Então precisamos encontrar o capital de hoje que, crescendo a 60% ao ano, chegue nesse valor.</p>
+      <p>Como 36 meses equivalem a 3 anos:</p>
+      <div class="formula">C = 13000 / (1,60)<sup>3</sup></div>
+      <div class="formula">C ≈ 3173,83</div>
+      <div class="answer"><strong>Resposta:</strong> a pessoa deve aplicar hoje aproximadamente <strong>R$ 3.173,83</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Valor atual e valor nominal”, p. 85; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p>Fluxo: -50000, 10000, 25000, 30000.</p>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 12,21% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -50.000; ano 1 = 10.000; ano 2 = 25.000; ano 3 = 30.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -50000 + 10000/(1+i) + 25000/(1+i)<sup>2</sup> + 30000/(1+i)<sup>3</sup></div>
+
+      <p>Testando taxas próximas:</p>
+      <div class="formula">VPL(12%) ≈ +211,83</div>
+      <div class="formula">VPL(13%) ≈ -780,27</div>
+
+      <p>Logo, a taxa está entre 12% e 13%.</p>
+      <div class="formula">i ≈ 12% + [211,83 / (211,83 + 780,27)] × 1%</div>
+      <div class="formula">i ≈ 12,21%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>12,21% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2017-10-05">Prova de 05/10/2017</h2>
@@ -340,29 +532,84 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-4.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Como a prova pede valor atual de um título em datas diferentes, usamos valor atual em juro simples:</p>
-    <div class="formula">VA = N / (1 + i × t)</div>
-    <p>Dados: N = R$ 15.500,00 e i = 48% a.a.</p>
-    <div class="formula">Hoje: VA = 15500 / (1 + 0,48 × 17/12) = 9226,19</div>
-    <div class="formula">Daqui a 8 meses: VA = 15500 / (1 + 0,48 × 9/12) = 11397,06</div>
-    <div class="formula">6 meses antes do vencimento: VA = 15500 / (1 + 0,48 × 6/12) = 12500,00</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 9.226,19; daqui a 8 meses = R$ 11.397,06; 6 meses antes do vencimento = R$ 12.500,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 15.500,00, com vencimento daqui a 17 meses e a taxa de juros corrente é de 48% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a 8 meses; c) 6 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <p>Nessa questão, o valor nominal é fixo: <strong>R$ 15.500,00</strong>. O que muda é a distância até o vencimento. Em juro simples racional:</p>
+      <div class="formula">VA = N / (1 + i × t)</div>
+
+      <h4>a) Hoje</h4>
+      <p>Faltam 17 meses para o vencimento, isto é, 17/12 de ano.</p>
+      <div class="formula">VA = 15500 / (1 + 0,48 × 17/12) = 9226,19</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 9.226,19</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19; e, para o tratamento do prazo, “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>b) Daqui a 8 meses</h4>
+      <p>Se já passaram 8 meses, então faltarão 9 meses para o vencimento.</p>
+      <div class="formula">VA = 15500 / (1 + 0,48 × 9/12) = 11397,06</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 8 meses = <strong>R$ 11.397,06</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>c) 6 meses antes do vencimento</h4>
+      <p>Aqui o prazo restante é de 6 meses.</p>
+      <div class="formula">VA = 15500 / (1 + 0,48 × 6/12) = 12500,00</div>
+      <div class="answer"><strong>Resposta:</strong> 6 meses antes do vencimento = <strong>R$ 12.500,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 18600 × (1 - 0,60 × 4/12) = 14880,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 14.880,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 60% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 18.600,00 ocorrer 4 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <p>No desconto comercial simples, calculamos primeiro o desconto:</p>
+      <div class="formula">D = 18600 × 0,60 × 4/12 = 3720,00</div>
+      <p>Em seguida, retiramos esse desconto do valor nominal:</p>
+      <div class="formula">A<sub>c</sub> = 18600 - 3720,00 = 14880,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 14.880,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <p>A prova pede o lucro. Então primeiro calculamos o montante e depois subtraímos o capital inicial.</p>
-    <div class="formula">M = 40000 × (1,20)<sup>14/12</sup> = 49480,96</div>
-    <div class="formula">Lucro = 49480,96 - 40000 = 9480,96</div>
-    <div class="answer"><strong>Resposta:</strong> lucro = R$ 9.480,96.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tendo investido R$ 40.000,00 na Bolsa de Valores, João esperava ganhar 20% a.a. Qual seria o lucro recebido por ele ao final de 14 meses, caso tal rentabilidade ocorresse?
+    </div>
+
+    <div class="steps">
+      <p>Como a rentabilidade é anual e o prazo é de 14 meses, temos 14/12 de ano.</p>
+      <p>Primeiro calculamos o montante:</p>
+      <div class="formula">M = 40000 × (1,20)<sup>14/12</sup> ≈ 49480,96</div>
+      <p>Mas a prova pede o <strong>lucro</strong>, e não o montante. Então precisamos retirar o capital inicial:</p>
+      <div class="formula">Lucro = 49480,96 - 40000 = 9480,96</div>
+      <div class="answer"><strong>Resposta:</strong> o lucro seria <strong>R$ 9.480,96</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Cálculo do juro”, p. 84; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p>Fluxo: -20000, 5000, 10000, 20000.</p>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 26,73% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -20.000; ano 1 = 5.000; ano 2 = 10.000; ano 3 = 20.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -20000 + 5000/(1+i) + 10000/(1+i)<sup>2</sup> + 20000/(1+i)<sup>3</sup></div>
+
+      <p>Testando duas taxas próximas:</p>
+      <div class="formula">VPL(26%) ≈ +265,19</div>
+      <div class="formula">VPL(27%) ≈ -99,18</div>
+
+      <p>Logo, a TIR está entre 26% e 27%.</p>
+      <div class="formula">i ≈ 26% + [265,19 / (265,19 + 99,18)] × 1%</div>
+      <div class="formula">i ≈ 26,73%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>26,73% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2017-01-18">Prova de 18/01/2017</h2>
@@ -374,25 +621,80 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-5.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Dados: N = R$ 20.000,00 e i = 33% a.a.</p>
-    <div class="formula">Hoje: VA = 20000 / (1 + 0,33 × 2) = 12048,19</div>
-    <div class="formula">Daqui a 1 ano: VA = 20000 / (1 + 0,33) = 15037,59</div>
-    <div class="formula">4 meses antes do vencimento: VA = 20000 / (1 + 0,33 × 4/12) = 18018,02</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 12.048,19; daqui a 1 ano = R$ 15.037,59; 4 meses antes do vencimento = R$ 18.018,02.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 20.000,00, com vencimento daqui a dois anos e a taxa de juros corrente é de 33% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a um ano; c) 4 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <div class="formula">VA = N / (1 + i × t)</div>
+
+      <h4>a) Hoje</h4>
+      <p>Faltam 2 anos para o vencimento.</p>
+      <div class="formula">VA = 20000 / (1 + 0,33 × 2) = 12048,19</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 12.048,19</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19.</div>
+
+      <h4>b) Daqui a um ano</h4>
+      <p>Se um ano já tiver passado, restará 1 ano para o vencimento.</p>
+      <div class="formula">VA = 20000 / (1 + 0,33) = 15037,59</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 1 ano = <strong>R$ 15.037,59</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19.</div>
+
+      <h4>c) 4 meses antes do vencimento</h4>
+      <p>O prazo restante será de 4 meses, isto é, 4/12 de ano.</p>
+      <div class="formula">VA = 20000 / (1 + 0,33 × 4/12) = 18018,02</div>
+      <div class="answer"><strong>Resposta:</strong> 4 meses antes do vencimento = <strong>R$ 18.018,02</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 22000 × (1 - 0,54 × 4/12) = 18040,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 18.040,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 54% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 22.000,00 ocorrer 4 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <div class="formula">D = 22000 × 0,54 × 4/12 = 3960,00</div>
+      <div class="formula">A<sub>c</sub> = 22000 - 3960,00 = 18040,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 18.040,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 25000 × (1,60)<sup>23/12</sup> = 61541,77</div>
-    <div class="formula">Lucro = 61541,77 - 25000 = 36541,77</div>
-    <div class="answer"><strong>Resposta:</strong> lucro = R$ 36.541,77.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tendo investido R$ 25.000,00 na Bolsa de Valores, João esperava ganhar 60% a.a. Qual seria o lucro recebido por ele ao final de 23 meses, caso tal rentabilidade ocorresse?
+    </div>
+
+    <div class="steps">
+      <p>Primeiro calculamos o montante ao fim de 23 meses.</p>
+      <div class="formula">M = 25000 × (1,60)<sup>23/12</sup> ≈ 61541,77</div>
+      <p>Depois retiramos o capital inicial, porque a prova quer apenas o lucro.</p>
+      <div class="formula">Lucro = 61541,77 - 25000 = 36541,77</div>
+      <div class="answer"><strong>Resposta:</strong> o lucro seria <strong>R$ 36.541,77</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Cálculo do juro”, p. 84; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 18,38% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -30.000; ano 1 = 5.000; ano 2 = 15.000; ano 3 = 25.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -30000 + 5000/(1+i) + 15000/(1+i)<sup>2</sup> + 25000/(1+i)<sup>3</sup></div>
+
+      <p>Testando duas taxas:</p>
+      <div class="formula">VPL(18%) ≈ +225,83</div>
+      <div class="formula">VPL(19%) ≈ -370,45</div>
+
+      <p>Como o VPL mudou de positivo para negativo, a TIR está entre 18% e 19%.</p>
+      <div class="formula">i ≈ 18% + [225,83 / (225,83 + 370,45)] × 1%</div>
+      <div class="formula">i ≈ 18,38%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>18,38% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2019-08-03">Prova de 03/08/2019</h2>
@@ -404,25 +706,75 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-6.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Dados:  N = R$ 10.500,00 e i = 48% a.a.</p>
-    <div class="formula">Hoje: VA = 10500 / (1 + 0,48 × 17/12) = 6250,00</div>
-    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,48 × 9/12) = 7720,59</div>
-    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,48 × 6/12) = 8467,74</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.250,00; daqui a 8 meses = R$ 7.720,59; 6 meses antes do vencimento = R$ 8.467,74.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 10.500,00, com vencimento daqui a 17 meses e a taxa de juros corrente é de 48% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a 8 meses; c) 6 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <div class="formula">VA = N / (1 + i × t)</div>
+
+      <h4>a) Hoje</h4>
+      <div class="formula">VA = 10500 / (1 + 0,48 × 17/12) = 6250,00</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 6.250,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>b) Daqui a 8 meses</h4>
+      <p>Depois de passarem 8 meses, faltarão 9 meses para o vencimento.</p>
+      <div class="formula">VA = 10500 / (1 + 0,48 × 9/12) = 7720,59</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 8 meses = <strong>R$ 7.720,59</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>c) 6 meses antes do vencimento</h4>
+      <div class="formula">VA = 10500 / (1 + 0,48 × 6/12) = 8467,74</div>
+      <div class="answer"><strong>Resposta:</strong> 6 meses antes do vencimento = <strong>R$ 8.467,74</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 14500 × (1 - 0,36 × 4/12) = 12760,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 12.760,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 36% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 14.500,00 ocorrer 4 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <div class="formula">D = 14500 × 0,36 × 4/12 = 1740,00</div>
+      <div class="formula">A<sub>c</sub> = 14500 - 1740,00 = 12760,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 12.760,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 24000 × (1,18)<sup>14/12</sup> = 29112,10</div>
-    <div class="formula">Lucro = 29112,10 - 24000 = 5112,10</div>
-    <div class="answer"><strong>Resposta:</strong> lucro = R$ 5.112,10.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tendo investido R$ 24.000,00 na Bolsa de Valores, João esperava ganhar 18% a.a. Qual seria o lucro recebido por ele ao final de 14 meses, caso tal rentabilidade ocorresse?
+    </div>
+
+    <div class="steps">
+      <div class="formula">M = 24000 × (1,18)<sup>14/12</sup> ≈ 29112,10</div>
+      <div class="formula">Lucro = 29112,10 - 24000 = 5112,10</div>
+      <div class="answer"><strong>Resposta:</strong> o lucro seria <strong>R$ 5.112,10</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Cálculo do juro”, p. 84; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 8,21% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -25.000; ano 1 = 5.000; ano 2 = 10.000; ano 3 = 15.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -25000 + 5000/(1+i) + 10000/(1+i)<sup>2</sup> + 15000/(1+i)<sup>3</sup></div>
+
+      <p>Testando 8% e 9%:</p>
+      <div class="formula">VPL(8%) ≈ +110,50</div>
+      <div class="formula">VPL(9%) ≈ -413,29</div>
+
+      <div class="formula">i ≈ 8% + [110,50 / (110,50 + 413,29)] × 1%</div>
+      <div class="formula">i ≈ 8,21%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>8,21% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2019-04-10">Prova de 10/04/2019</h2>
@@ -434,13 +786,37 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-7.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questões 1, 2 e 3</h3>
-    <p>Essas três questões mandam resolver exercícios de capítulos do livro: exercício 16 do capítulo 1, exercício 32 do capítulo 2 e exercício 7 do capítulo 3. Como esses enunciados não aparecem no PDF, não dá para resolver corretamente só com este arquivo.</p>
+    <div class="statement">
+      <strong>Enunciado.</strong> A prova manda resolver exercícios do livro: exercício 16 do capítulo 1, exercício 32 do capítulo 2 e exercício 7 do capítulo 3.
+    </div>
+
+    <div class="steps">
+      <p>Neste caso, a prova não traz o enunciado completo. Ela apenas remete ao livro. Então, sem ver os exercícios exatos dentro do livro, não é correto inventar uma resolução aqui. O procedimento certo é abrir o capítulo indicado, localizar o exercício pedido e só então resolver.</p>
+      <div class="answer"><strong>Resposta:</strong> essas três questões dependem do enunciado do próprio livro e, por isso, <strong>não podem ser resolvidas corretamente só com a folha da prova</strong>.</div>
+      <div class="reading-note"><strong>Para entender o que precisa ser consultado, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, “Exercícios propostos”, p. 41; Parte I — Descontos, “Exercícios propostos”, p. 75; e Parte II — Juros Compostos, “Exercícios propostos”, p. 121.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p>Fluxo: -10000, 3000, 5000, 8000.</p>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 23,24% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -10.000; ano 1 = 3.000; ano 2 = 5.000; ano 3 = 8.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -10000 + 3000/(1+i) + 5000/(1+i)<sup>2</sup> + 8000/(1+i)<sup>3</sup></div>
+
+      <p>Testando duas taxas próximas:</p>
+      <div class="formula">VPL(23%) ≈ +43,01</div>
+      <div class="formula">VPL(24%) ≈ -132,93</div>
+
+      <div class="formula">i ≈ 23% + [43,01 / (43,01 + 132,93)] × 1%</div>
+      <div class="formula">i ≈ 23,24%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>23,24% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2018-04-11">Prova de 11/04/2018</h2>
@@ -452,25 +828,66 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-8.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Dados: N = R$ 10.500,00 e i = 45% a.a.</p>
-    <div class="formula">Hoje: VA = 10500 / (1 + 0,45 × 17/12) = 6412,21</div>
-    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,45 × 9/12) = 7850,47</div>
-    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,45 × 6/12) = 8571,43</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.412,21; daqui a 8 meses = R$ 7.850,47; 6 meses antes do vencimento = R$ 8.571,43.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 10.500,00, com vencimento daqui a 17 meses e a taxa de juros corrente é de 45% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a 8 meses; c) 6 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <div class="formula">VA = N / (1 + i × t)</div>
+      <div class="formula">Hoje: 10500 / (1 + 0,45 × 17/12) = 6412,21</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 6.412,21</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <div class="formula">Daqui a 8 meses: 10500 / (1 + 0,45 × 9/12) = 7850,47</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 8 meses = <strong>R$ 7.850,47</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <div class="formula">6 meses antes do vencimento: 10500 / (1 + 0,45 × 6/12) = 8571,43</div>
+      <div class="answer"><strong>Resposta:</strong> 6 meses antes do vencimento = <strong>R$ 8.571,43</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 28600 × (1 - 0,36 × 4/12) = 25168,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 25.168,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 36% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 28.600,00 ocorrer 4 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <div class="formula">D = 28600 × 0,36 × 4/12 = 3432,00</div>
+      <div class="formula">A<sub>c</sub> = 28600 - 3432,00 = 25168,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 25.168,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 51000 × (1,20)<sup>11/12</sup> = 60277,19</div>
-    <div class="formula">Lucro = 60277,19 - 51000 = 9277,19</div>
-    <div class="answer"><strong>Resposta:</strong> lucro = R$ 9.277,19.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tendo investido R$ 51.000,00 na Bolsa de Valores, João esperava ganhar 20% a.a. Qual seria o lucro recebido por ele ao final de 11 meses, caso tal rentabilidade ocorresse?
+    </div>
+
+    <div class="steps">
+      <div class="formula">M = 51000 × (1,20)<sup>11/12</sup> ≈ 60277,19</div>
+      <div class="formula">Lucro = 60277,19 - 51000 = 9277,19</div>
+      <div class="answer"><strong>Resposta:</strong> o lucro seria <strong>R$ 9.277,19</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Cálculo do juro”, p. 84; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 15,12% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -25.000; ano 1 = 5.000; ano 2 = 10.000; ano 3 = 20.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -25000 + 5000/(1+i) + 10000/(1+i)<sup>2</sup> + 20000/(1+i)<sup>3</sup></div>
+      <div class="formula">VPL(15%) ≈ +59,59</div>
+      <div class="formula">VPL(16%) ≈ -444,87</div>
+      <div class="formula">i ≈ 15% + [59,59 / (59,59 + 444,87)] × 1%</div>
+      <div class="formula">i ≈ 15,12%</div>
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>15,12% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2018-09-18">Prova de 18/09/2018</h2>
@@ -482,25 +899,66 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-9.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Dados: N = R$ 10.500,00 e i = 36% a.a.</p>
-    <div class="formula">Hoje: VA = 10500 / (1 + 0,36 × 17/12) = 6953,64</div>
-    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,36 × 9/12) = 8267,72</div>
-    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,36 × 6/12) = 8898,31</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.953,64; daqui a 8 meses = R$ 8.267,72; 6 meses antes do vencimento = R$ 8.898,31.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 10.500,00, com vencimento daqui a 17 meses e a taxa de juros corrente é de 36% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a 8 meses; c) 6 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <div class="formula">VA = N / (1 + i × t)</div>
+      <div class="formula">Hoje: 10500 / (1 + 0,36 × 17/12) = 6953,64</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 6.953,64</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <div class="formula">Daqui a 8 meses: 10500 / (1 + 0,36 × 9/12) = 8267,72</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 8 meses = <strong>R$ 8.267,72</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <div class="formula">6 meses antes do vencimento: 10500 / (1 + 0,36 × 6/12) = 8898,31</div>
+      <div class="answer"><strong>Resposta:</strong> 6 meses antes do vencimento = <strong>R$ 8.898,31</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 14500 × (1 - 0,30 × 4/12) = 13050,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 13.050,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 30% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 14.500,00 ocorrer 4 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <div class="formula">D = 14500 × 0,30 × 4/12 = 1450,00</div>
+      <div class="formula">A<sub>c</sub> = 14500 - 1450,00 = 13050,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 13.050,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 24000 × (1,12)<sup>14/12</sup> = 27392,54</div>
-    <div class="formula">Lucro = 27392,54 - 24000 = 3392,54</div>
-    <div class="answer"><strong>Resposta:</strong> lucro = R$ 3.392,54.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Tendo investido R$ 24.000,00 na Bolsa de Valores, João esperava ganhar 12% a.a. Qual seria o lucro recebido por ele ao final de 14 meses, caso tal rentabilidade ocorresse?
+    </div>
+
+    <div class="steps">
+      <div class="formula">M = 24000 × (1,12)<sup>14/12</sup> ≈ 27392,54</div>
+      <div class="formula">Lucro = 27392,54 - 24000 = 3392,54</div>
+      <div class="answer"><strong>Resposta:</strong> o lucro seria <strong>R$ 3.392,54</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; seção “Cálculo do juro”, p. 84; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 15,12% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -25.000; ano 1 = 5.000; ano 2 = 10.000; ano 3 = 20.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -25000 + 5000/(1+i) + 10000/(1+i)<sup>2</sup> + 20000/(1+i)<sup>3</sup></div>
+      <div class="formula">VPL(15%) ≈ +59,59</div>
+      <div class="formula">VPL(16%) ≈ -444,87</div>
+      <div class="formula">i ≈ 15% + [59,59 / (59,59 + 444,87)] × 1%</div>
+      <div class="formula">i ≈ 15,12%</div>
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>15,12% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
   <h2 id="p2023-05-04">Prova de 04/05/2023</h2>
@@ -512,34 +970,102 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
     </div>
     <iframe class="pdf-frame" src="provas/primeira instancia-10.pdf#view=FitH"></iframe>
   </div>
+
   <div class="card">
     <h3>Questão 1</h3>
-    <p>Dados: N = R$ 22.500,00 e i = 18% a.a.</p>
-    <div class="formula">Hoje: VA = 22500 / (1 + 0,18 × 15/12) = 18367,35</div>
-    <div class="formula">Daqui a 7 meses: VA = 22500 / (1 + 0,18 × 8/12) = 20089,29</div>
-    <div class="formula">4 meses antes do vencimento: VA = 22500 / (1 + 0,18 × 4/12) = 21226,42</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 18.367,35; daqui a 7 meses = R$ 20.089,29; 4 meses antes do vencimento = R$ 21.226,42.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se eu tenho um título com valor nominal de R$ 22.500,00, com vencimento daqui a 15 meses e a taxa de juros corrente é de 18% a.a., qual o valor atual deste título nas seguintes datas: a) hoje; b) daqui a 7 meses; c) 4 meses antes do seu vencimento.
+    </div>
+
+    <div class="steps">
+      <div class="formula">VA = N / (1 + i × t)</div>
+
+      <h4>a) Hoje</h4>
+      <p>Como o vencimento é em 15 meses, hoje faltam 15 meses.</p>
+      <div class="formula">VA = 22500 / (1 + 0,18 × 15/12) = 18367,35</div>
+      <div class="answer"><strong>Resposta:</strong> hoje = <strong>R$ 18.367,35</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor nominal e valor atual”, p. 16; especialmente “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>b) Daqui a 7 meses</h4>
+      <p>Se passaram 7 meses, então faltam 8 meses para o vencimento.</p>
+      <div class="formula">VA = 22500 / (1 + 0,18 × 8/12) = 20089,29</div>
+      <div class="answer"><strong>Resposta:</strong> daqui a 7 meses = <strong>R$ 20.089,29</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+
+      <h4>c) 4 meses antes do vencimento</h4>
+      <div class="formula">VA = 22500 / (1 + 0,18 × 4/12) = 21226,42</div>
+      <div class="answer"><strong>Resposta:</strong> 4 meses antes do vencimento = <strong>R$ 21.226,42</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta alternativa, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Juros Simples, seção “Valor atual”, p. 19; e seção “Períodos não-inteiros”, p. 13.</div>
+    </div>
 
     <h3>Questão 2</h3>
-    <div class="formula">A<sub>c</sub> = 24500 × (1 - 0,30 × 6/12) = 20825,00</div>
-    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 20.825,00.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Se a taxa de juros corrente for de 30% a.a., qual será o valor atual comercial, se o desconto de um título no valor de R$ 24.500,00 ocorrer 6 meses antes de seu vencimento?
+    </div>
+
+    <div class="steps">
+      <div class="formula">D = 24500 × 0,30 × 6/12 = 3675,00</div>
+      <div class="formula">A<sub>c</sub> = 24500 - 3675,00 = 20825,00</div>
+      <div class="answer"><strong>Resposta:</strong> o valor atual comercial é <strong>R$ 20.825,00</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte I — Descontos, seção “Desconto comercial ou desconto por fora”, p. 46.</div>
+    </div>
 
     <h3>Questão 3</h3>
-    <div class="formula">M = 2504 × (1,24)<sup>23/12</sup> = 3781,75</div>
-    <div class="answer"><strong>Resposta:</strong> montante = R$ 3.781,75.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Uma pessoa aplica R$ 2.504,00 pelo prazo de 23 meses, em instituição financeira que paga 24% a.a. de juros. Qual é o montante auferido? (juros compostos)
+    </div>
+
+    <div class="steps">
+      <p>Como o regime é composto, usamos a fórmula do montante em juros compostos.</p>
+      <div class="formula">M = 2504 × (1,24)<sup>23/12</sup></div>
+      <div class="formula">M ≈ 3781,75</div>
+      <div class="answer"><strong>Resposta:</strong> montante = <strong>R$ 3.781,75</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Parte II — Juros Compostos, seção “Montante”, p. 82; e seção “Períodos não-inteiros”, p. 91.</div>
+    </div>
 
     <h3>Questão 4</h3>
-    <p><strong>Hoje:</strong></p>
-    <div class="formula">V<sub>0</sub> = 15000 + 12000/(1,203)<sup>7/12</sup> + 22000/(1,203)<sup>15/12</sup> = 43235,44</div>
-    <p><strong>Daqui a um ano:</strong></p>
-    <div class="formula">V<sub>1</sub> = 15000×1,203 + 12000×(1,203)<sup>5/12</sup> + 22000/(1,203)<sup>3/12</sup> = 52012,23</div>
-    <div class="answer"><strong>Resposta:</strong> hoje = R$ 43.235,44; daqui a um ano = R$ 52.012,23.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Possuo R$ 15.000,00 hoje, um título de R$ 12.000,00 que vence daqui a 7 meses e uma nota promissória que vai vencer daqui a 15 meses no valor de R$ 22.000,00. Se a taxa de mercado for de 20,3% a.a., quanto possuo hoje? E daqui a um ano? (juros compostos)
+    </div>
+
+    <div class="steps">
+      <p><strong>Valor hoje:</strong> escolhemos a data focal hoje e trazemos os dois títulos futuros para a data zero.</p>
+      <div class="formula">V<sub>0</sub> = 15000 + 12000/(1,203)<sup>7/12</sup> + 22000/(1,203)<sup>15/12</sup></div>
+      <div class="formula">V<sub>0</sub> ≈ 43235,44</div>
+
+      <p><strong>Valor daqui a um ano:</strong> escolhemos a data focal em 12 meses.
+      <br>• os R$ 15.000,00 crescem por um ano;
+      <br>• o título de R$ 12.000,00 vence em 7 meses, então ele é levado 5 meses adiante;
+      <br>• a nota promissória de R$ 22.000,00 vence em 15 meses, então ela é trazida 3 meses para trás.</p>
+
+      <div class="formula">V<sub>1</sub> = 15000×1,203 + 12000×(1,203)<sup>5/12</sup> + 22000/(1,203)<sup>3/12</sup></div>
+      <div class="formula">V<sub>1</sub> ≈ 52012,23</div>
+
+      <div class="answer"><strong>Resposta:</strong> hoje possui <strong>R$ 43.235,44</strong>; daqui a um ano possuirá <strong>R$ 52.012,23</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Data focal”, p. 132; seção “Equação de valor”, p. 133; e seção “Valor atual de um conjunto de capitais”, p. 137. Para a fórmula de regime composto, veja também Parte II — Juros Compostos, seção “Valor atual e valor nominal”, p. 85.</div>
+    </div>
 
     <h3>Questão 5</h3>
-    <div class="answer"><strong>Resposta:</strong> TIR ≈ 22,41% ao ano.</div>
+    <div class="statement">
+      <strong>Enunciado.</strong> Dado o fluxo de caixa: ano 0 = -25.000; ano 1 = 5.000; ano 2 = 15.000; ano 3 = 20.000. Pede-se calcular a taxa de retorno.
+    </div>
+
+    <div class="steps">
+      <div class="formula">0 = -25000 + 5000/(1+i) + 15000/(1+i)<sup>2</sup> + 20000/(1+i)<sup>3</sup></div>
+
+      <p>Testando taxas próximas:</p>
+      <div class="formula">VPL(22%) ≈ +190,43</div>
+      <div class="formula">VPL(23%) ≈ -272,55</div>
+
+      <p>A taxa está entre 22% e 23%.</p>
+      <div class="formula">i ≈ 22% + [190,43 / (190,43 + 272,55)] × 1%</div>
+      <div class="formula">i ≈ 22,41%</div>
+
+      <div class="answer"><strong>Resposta:</strong> a taxa de retorno é aproximadamente <strong>22,41% ao ano</strong>.</div>
+      <div class="reading-note"><strong>Para entender esta questão, leia no livro <em>Matemática Financeira (Mathias e Gomes)</em>:</strong> Equivalência de Capitais, seção “Equação de valor”, p. 133; e, no Apêndice, seção “Valor atual e taxa de retorno”, p. 159, junto com “Comparação entre o valor atual e a taxa de retorno”, p. 164.</div>
+    </div>
   </div>
 
 </main>
-</body> 
+</body>
 </html>
- 
