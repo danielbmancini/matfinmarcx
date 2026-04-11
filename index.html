@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provas Resolvidas de Matemática Financeira</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --line: #ddd;
+  --panel: #f7f7f7;
+  --code: #f3f4f6;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 12px; }
+h1 { font-size: 1.9rem; margin-top: 8px; }
+h2 { font-size: 1.45rem; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); }
+h3 { font-size: 1.15rem; margin-top: 24px; }
+h4 { font-size: 1rem; margin-top: 18px; }
+p, li { margin: 0 0 10px; }
+small, .muted { color: var(--muted); }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 14px 0;
+}
+.formula {
+  background: var(--code);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  margin: 10px 0;
+}
+.answer {
+  background: #fafafa;
+  border-left: 4px solid #999;
+  padding: 10px 12px;
+  margin: 12px 0;
+}
+nav {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 18px 0 26px;
+}
+nav ul {
+  columns: 2;
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+.section-gap { margin-top: 18px; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+
+.pdf-block {
+  margin: 10px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.pdf-meta {
+  padding: 10px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.pdf-frame {
+  width: 100%;
+  height: 620px;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+.pdf-link {
+  display: inline-block;
+  margin-top: 6px;
+}
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  main { padding: 16px 12px 56px; }
+  nav ul { columns: 1; }
+  .pdf-frame { height: 420px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1>Provas Resolvidas de Matemática Financeira</h1>
+  <p>Material simples, em ordem, com os conceitos primeiro e depois as provas, uma por uma.</p>
+  <p class="muted">As questões foram extraídas do PDF enviado pelo usuário. Quando o enunciado remete a exercícios de um livro e esse enunciado não aparece no PDF, a questão fica indicada como não resolvível apenas com este arquivo.</p>
+
+  <nav>
+    <strong>Navegação</strong>
+    <ul>
+      <li><a href="#conceitos">Conceitos</a></li>
+      <li><a href="#p2014-09-23">23/09/2014</a></li>
+      <li><a href="#p2012-12-14">14/12/2012</a></li>
+      <li><a href="#p2016-07-11">11/07/2016</a></li>
+      <li><a href="#p2017-10-05">05/10/2017</a></li>
+      <li><a href="#p2017-01-18">18/01/2017</a></li>
+      <li><a href="#p2019-08-03">03/08/2019</a></li>
+      <li><a href="#p2019-04-10">10/04/2019</a></li>
+      <li><a href="#p2018-04-11">11/04/2018</a></li>
+      <li><a href="#p2018-09-18">18/09/2018</a></li>
+      <li><a href="#p2023-05-04">04/05/2023</a></li>
+      <li><a href="#p2017-05-31">31/05/2017</a></li>
+      <li><a href="#p2015-04-15">15/04/2015</a></li>
+      <li><a href="#p2013-10-02">02/10/2013</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="conceitos">Conceitos</h2>
+
+  <div class="card">
+    <h3>Capital</h3>
+    <p>É o valor inicial de uma aplicação, empréstimo ou operação financeira. Nas fórmulas, costuma aparecer como <strong>C</strong>.</p>
+  </div>
+
+  <div class="card">
+    <h3>Taxa de juros</h3>
+    <p>É o percentual cobrado ou pago em cada período. Nas fórmulas, aparece como <strong>i</strong>.</p>
+    <p>Exemplo: 24% ao ano significa 0,24 por ano. 2,5% ao mês significa 0,025 por mês.</p>
+  </div>
+
+  <div class="card">
+    <h3>Prazo</h3>
+    <p>É o tempo da operação. Nas fórmulas, aparece como <strong>t</strong>. O prazo precisa estar na mesma unidade da taxa.</p>
+    <p>Se a taxa está ao ano e o prazo está em meses, primeiro convertemos meses para anos.</p>
+  </div>
+
+  <div class="card">
+    <h3>Juro simples</h3>
+    <p>No juro simples, os juros são calculados sempre sobre o capital inicial.</p>
+    <div class="formula">J = C × i × t</div>
+    <p>Em seguida, o <strong>montante</strong> é:</p>
+    <div class="formula">M = C + J</div>
+  </div>
+
+  <div class="card">
+    <h3>Montante</h3>
+    <p>É o valor final da operação: capital inicial mais juros.</p>
+  </div>
+
+  <div class="card">
+    <h3>Juros compostos</h3>
+    <p>Nos juros compostos, cada período rende juros sobre o saldo acumulado do período anterior.</p>
+    <div class="formula">M = C × (1 + i)<sup>t</sup></div>
+    <p>Quando queremos descobrir o capital inicial:</p>
+    <div class="formula">C = M / (1 + i)<sup>t</sup></div>
+  </div>
+
+  <div class="card">
+    <h3>Valor nominal de um título</h3>
+    <p>É o valor que o título paga no vencimento. Costuma aparecer como <strong>N</strong>.</p>
+  </div>
+
+  <div class="card">
+    <h3>Valor atual</h3>
+    <p>É o valor equivalente do título antes do vencimento.</p>
+    <p>Em juro simples racional:</p>
+    <div class="formula">VA = N / (1 + i × t)</div>
+  </div>
+
+  <div class="card">
+    <h3>Desconto comercial simples</h3>
+    <p>É um desconto calculado diretamente sobre o valor nominal do título.</p>
+    <div class="formula">D = N × i × t</div>
+    <p>O valor atual comercial é:</p>
+    <div class="formula">A<sub>c</sub> = N - D = N × (1 - i × t)</div>
+  </div>
+
+  <div class="card">
+    <h3>Desconto bancário</h3>
+    <p>Nestas provas, o desconto bancário aparece como a soma do desconto comercial com uma taxa de serviço ou taxa administrativa cobrada pelo banco.</p>
+  </div>
+
+  <div class="card">
+    <h3>Taxa efetiva da operação</h3>
+    <p>É o custo real da antecipação em relação ao valor líquido recebido.</p>
+    <div class="formula">i<sub>efetiva, período</sub> = desconto total / valor líquido recebido</div>
+    <p>Neste material, quando a prova pede uma taxa efetiva anual e não especifica outro critério, foi usada a anualização simples proporcional ao prazo.</p>
+  </div>
+
+  <div class="card">
+    <h3>Fluxo de caixa</h3>
+    <p>É a sequência de entradas e saídas de dinheiro ao longo do tempo. Valor negativo é saída. Valor positivo é entrada.</p>
+  </div>
+
+  <div class="card">
+    <h3>Taxa interna de retorno (TIR)</h3>
+    <p>É a taxa que faz o valor presente líquido do fluxo de caixa ser igual a zero. Em termos práticos, ela mede a rentabilidade implícita do fluxo.</p>
+  </div>
+
+  <h2 id="p2014-09-23">Prova de 23/09/2014</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-1.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-1.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <h4>a) R$ 2.500,00 a 32% a.a. por 7 meses</h4>
+    <p>Como a taxa está ao ano e o prazo está em meses, primeiro convertemos 7 meses para anos: 7/12.</p>
+    <div class="formula">J = 2500 × 0,32 × 7/12 = 466,67</div>
+    <div class="formula">M = 2500 + 466,67 = 2966,67</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 466,67; montante = R$ 2.966,67.</div>
+
+    <h4>b) R$ 3.000,00 a 26,5% a.a. por 2 anos e 3 meses</h4>
+    <p>2 anos e 3 meses = 2,25 anos.</p>
+    <div class="formula">J = 3000 × 0,265 × 2,25 = 1788,75</div>
+    <div class="formula">M = 3000 + 1788,75 = 4788,75</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 1.788,75; montante = R$ 4.788,75.</div>
+
+    <h4>c) R$ 2.500,00 a 2,5% a.m. por 3 bimestres</h4>
+    <p>Um bimestre tem 2 meses. Então 3 bimestres = 6 meses.</p>
+    <div class="formula">J = 2500 × 0,025 × 6 = 375,00</div>
+    <div class="formula">M = 2500 + 375,00 = 2875,00</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 375,00; montante = R$ 2.875,00.</div>
+
+    <h3>Questão 2</h3>
+    <p>Valor nominal de R$ 16.000,00, taxa de juros de 28% a.a., prazo de 7 meses e taxa de serviço de 3,5%.</p>
+    <div class="formula">Desconto comercial = 16000 × 0,28 × 7/12 = 2613,33</div>
+    <div class="formula">Taxa de serviço = 16000 × 0,035 = 560,00</div>
+    <div class="formula">Desconto bancário total = 2613,33 + 560,00 = 3173,33</div>
+    <div class="formula">Valor líquido = 16000 - 3173,33 = 12826,67</div>
+    <div class="formula">Taxa efetiva do período = 3173,33 / 12826,67 = 24,74%</div>
+    <div class="formula">Taxa efetiva anual simples = 42,41%</div>
+    <div class="answer"><strong>Resposta:</strong> desconto bancário = R$ 3.173,33; valor líquido = R$ 12.826,67; taxa efetiva do período = 24,74%; taxa efetiva anual simples = 42,41%.</div>
+
+    <h3>Questão 3</h3>
+    <p>A pessoa aplicou R$ 6.050,00 a 2,5% ao mês e quer chegar a R$ 9.500,00. Aqui usamos juros compostos.</p>
+    <div class="formula">9500 = 6050 × (1,025)<sup>t</sup></div>
+    <div class="formula">t = ln(9500/6050) / ln(1,025) = 18,27 meses</div>
+    <div class="answer"><strong>Resposta:</strong> aproximadamente 18,27 meses.</div>
+
+    <h3>Questão 4</h3>
+    <p>Fluxo de caixa: -50000, 15000, 25000, 30000.</p>
+    <p>A TIR é a taxa que zera o valor presente líquido desse fluxo.</p>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 16,79% ao ano.</div>
+  </div>
+
+  <h2 id="p2012-12-14">Prova de 14/12/2012</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-2.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-2.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <div class="formula">J = 1540 × 0,33 × 23/12 = 974,05</div>
+    <div class="formula">M = 1540 + 974,05 = 2514,05</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 974,05; montante = R$ 2.514,05.</div>
+
+    <h3>Questão 2</h3>
+    <p>O título é resgatado 9 meses antes do vencimento. Então o desconto usa prazo de 9 meses.</p>
+    <div class="formula">D = 67000 × 0,25 × 9/12 = 12562,50</div>
+    <div class="formula">A<sub>c</sub> = 67000 - 12562,50 = 54437,50</div>
+    <div class="answer"><strong>Resposta:</strong> desconto = R$ 12.562,50; valor atual comercial = R$ 54.437,50.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 1540 × (1,33)<sup>23/12</sup> = 2660,13</div>
+    <div class="answer"><strong>Resposta:</strong> montante = R$ 2.660,13.</div>
+
+    <h3>Questão 4</h3>
+    <p>Somamos os valores equivalentes de tudo em uma mesma data.</p>
+    <p><strong>Hoje:</strong> o dinheiro em mãos já está na data zero; os outros dois valores futuros são trazidos para hoje por juros compostos.</p>
+    <div class="formula">V<sub>0</sub> = 5000 + 12500/(1,153)<sup>7/12</sup> + 20000/(1,153)<sup>15/12</sup> = 33243,38</div>
+    <p><strong>Daqui a um ano:</strong> os 5000 são capitalizados por 1 ano; o título que vence em 7 meses é levado 5 meses para frente; a nota que vence em 15 meses é trazida 3 meses para trás.</p>
+    <div class="formula">V<sub>1</sub> = 5000×1,153 + 12500×(1,153)<sup>5/12</sup> + 20000/(1,153)<sup>3/12</sup> = 38329,61</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 33.243,38; daqui a um ano = R$ 38.329,61.</div>
+
+    <h3>Questão 5</h3>
+    <p>Fluxo: -40, 5, 7, 9, 11.</p>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ -7,51% ao ano.</div>
+  </div>
+
+  <h2 id="p2016-07-11">Prova de 11/07/2016</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-3.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-3.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Primeiro calculamos quanto a dívida valeria no vencimento, usando 5% ao mês durante 24 meses.</p>
+    <div class="formula">M = 20000 × (1,05)<sup>24</sup> = 64502,00</div>
+    <p>Como João quer quitar 6 meses antes, trazemos esse valor 6 meses para trás usando o valor do dinheiro na época: 44% ao ano em juro simples.</p>
+    <div class="formula">VA = 64502,00 / (1 + 0,44 × 6/12) = 52870,49</div>
+    <div class="answer"><strong>Resposta:</strong> Carlos poderia aceitar aproximadamente R$ 52.870,49.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">Desconto comercial = 25000 × 0,50 × 6/12 = 6250,00</div>
+    <div class="formula">Taxa de serviço = 25000 × 0,07 = 1750,00</div>
+    <div class="formula">Desconto total = 8000,00</div>
+    <div class="formula">Valor líquido = 25000 - 8000 = 17000,00</div>
+    <div class="formula">Taxa efetiva do período = 8000 / 17000 = 47,06%</div>
+    <div class="formula">Taxa efetiva anual simples = 94,12%</div>
+    <div class="answer"><strong>Resposta:</strong> valor líquido recebido = R$ 17.000,00; taxa efetiva do período = 47,06%; taxa efetiva anual simples = 94,12%.</div>
+
+    <h3>Questão 3</h3>
+    <p>Queremos descobrir quanto precisa ser aplicado hoje para virar R$ 13.000,00 em 36 meses, com 60% ao ano. Como 36 meses são 3 anos:</p>
+    <div class="formula">C = 13000 / (1,60)<sup>3</sup> = 3173,83</div>
+    <div class="answer"><strong>Resposta:</strong> deve aplicar hoje aproximadamente R$ 3.173,83.</div>
+
+    <h3>Questão 4</h3>
+    <p>Fluxo: -50000, 10000, 25000, 30000.</p>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 12,21% ao ano.</div>
+  </div>
+
+  <h2 id="p2017-10-05">Prova de 05/10/2017</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-4.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-4.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Como a prova pede valor atual de um título em datas diferentes, usamos valor atual em juro simples:</p>
+    <div class="formula">VA = N / (1 + i × t)</div>
+    <p>Dados: N = R$ 15.500,00 e i = 48% a.a.</p>
+    <div class="formula">Hoje: VA = 15500 / (1 + 0,48 × 17/12) = 9226,19</div>
+    <div class="formula">Daqui a 8 meses: VA = 15500 / (1 + 0,48 × 9/12) = 11397,06</div>
+    <div class="formula">6 meses antes do vencimento: VA = 15500 / (1 + 0,48 × 6/12) = 12500,00</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 9.226,19; daqui a 8 meses = R$ 11.397,06; 6 meses antes do vencimento = R$ 12.500,00.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 18600 × (1 - 0,60 × 4/12) = 14880,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 14.880,00.</div>
+
+    <h3>Questão 3</h3>
+    <p>A prova pede o lucro. Então primeiro calculamos o montante e depois subtraímos o capital inicial.</p>
+    <div class="formula">M = 40000 × (1,20)<sup>14/12</sup> = 49480,96</div>
+    <div class="formula">Lucro = 49480,96 - 40000 = 9480,96</div>
+    <div class="answer"><strong>Resposta:</strong> lucro = R$ 9.480,96.</div>
+
+    <h3>Questão 4</h3>
+    <p>Fluxo: -20000, 5000, 10000, 20000.</p>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 26,73% ao ano.</div>
+  </div>
+
+  <h2 id="p2017-01-18">Prova de 18/01/2017</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-5.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-5.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 20.000,00 e i = 33% a.a.</p>
+    <div class="formula">Hoje: VA = 20000 / (1 + 0,33 × 2) = 12048,19</div>
+    <div class="formula">Daqui a 1 ano: VA = 20000 / (1 + 0,33) = 15037,59</div>
+    <div class="formula">4 meses antes do vencimento: VA = 20000 / (1 + 0,33 × 4/12) = 18018,02</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 12.048,19; daqui a 1 ano = R$ 15.037,59; 4 meses antes do vencimento = R$ 18.018,02.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 22000 × (1 - 0,54 × 4/12) = 18040,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 18.040,00.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 25000 × (1,60)<sup>23/12</sup> = 61541,77</div>
+    <div class="formula">Lucro = 61541,77 - 25000 = 36541,77</div>
+    <div class="answer"><strong>Resposta:</strong> lucro = R$ 36.541,77.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 18,38% ao ano.</div>
+  </div>
+
+  <h2 id="p2019-08-03">Prova de 03/08/2019</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-6.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-6.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 10.500,00 e i = 48% a.a.</p>
+    <div class="formula">Hoje: VA = 10500 / (1 + 0,48 × 17/12) = 6250,00</div>
+    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,48 × 9/12) = 7720,59</div>
+    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,48 × 6/12) = 8467,74</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.250,00; daqui a 8 meses = R$ 7.720,59; 6 meses antes do vencimento = R$ 8.467,74.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 14500 × (1 - 0,36 × 4/12) = 12760,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 12.760,00.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 24000 × (1,18)<sup>14/12</sup> = 29112,10</div>
+    <div class="formula">Lucro = 29112,10 - 24000 = 5112,10</div>
+    <div class="answer"><strong>Resposta:</strong> lucro = R$ 5.112,10.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 8,21% ao ano.</div>
+  </div>
+
+  <h2 id="p2019-04-10">Prova de 10/04/2019</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-7.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-7.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questões 1, 2 e 3</h3>
+    <p>Essas três questões mandam resolver exercícios de capítulos do livro: exercício 16 do capítulo 1, exercício 32 do capítulo 2 e exercício 7 do capítulo 3. Como esses enunciados não aparecem no PDF, não dá para resolver corretamente só com este arquivo.</p>
+
+    <h3>Questão 4</h3>
+    <p>Fluxo: -10000, 3000, 5000, 8000.</p>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 23,24% ao ano.</div>
+  </div>
+
+  <h2 id="p2018-04-11">Prova de 11/04/2018</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-8.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-8.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 10.500,00 e i = 45% a.a.</p>
+    <div class="formula">Hoje: VA = 10500 / (1 + 0,45 × 17/12) = 6412,21</div>
+    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,45 × 9/12) = 7850,47</div>
+    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,45 × 6/12) = 8571,43</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.412,21; daqui a 8 meses = R$ 7.850,47; 6 meses antes do vencimento = R$ 8.571,43.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 28600 × (1 - 0,36 × 4/12) = 25168,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 25.168,00.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 51000 × (1,20)<sup>11/12</sup> = 60277,19</div>
+    <div class="formula">Lucro = 60277,19 - 51000 = 9277,19</div>
+    <div class="answer"><strong>Resposta:</strong> lucro = R$ 9.277,19.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 15,12% ao ano.</div>
+  </div>
+
+  <h2 id="p2018-09-18">Prova de 18/09/2018</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-9.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-9.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 10.500,00 e i = 36% a.a.</p>
+    <div class="formula">Hoje: VA = 10500 / (1 + 0,36 × 17/12) = 6953,64</div>
+    <div class="formula">Daqui a 8 meses: VA = 10500 / (1 + 0,36 × 9/12) = 8267,72</div>
+    <div class="formula">6 meses antes do vencimento: VA = 10500 / (1 + 0,36 × 6/12) = 8898,31</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 6.953,64; daqui a 8 meses = R$ 8.267,72; 6 meses antes do vencimento = R$ 8.898,31.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 14500 × (1 - 0,30 × 4/12) = 13050,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 13.050,00.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 24000 × (1,12)<sup>14/12</sup> = 27392,54</div>
+    <div class="formula">Lucro = 27392,54 - 24000 = 3392,54</div>
+    <div class="answer"><strong>Resposta:</strong> lucro = R$ 3.392,54.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 15,12% ao ano.</div>
+  </div>
+
+  <h2 id="p2023-05-04">Prova de 04/05/2023</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-10.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-10.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 22.500,00 e i = 18% a.a.</p>
+    <div class="formula">Hoje: VA = 22500 / (1 + 0,18 × 15/12) = 18367,35</div>
+    <div class="formula">Daqui a 7 meses: VA = 22500 / (1 + 0,18 × 8/12) = 20089,29</div>
+    <div class="formula">4 meses antes do vencimento: VA = 22500 / (1 + 0,18 × 4/12) = 21226,42</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 18.367,35; daqui a 7 meses = R$ 20.089,29; 4 meses antes do vencimento = R$ 21.226,42.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">A<sub>c</sub> = 24500 × (1 - 0,30 × 6/12) = 20825,00</div>
+    <div class="answer"><strong>Resposta:</strong> valor atual comercial = R$ 20.825,00.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">M = 2504 × (1,24)<sup>23/12</sup> = 3781,75</div>
+    <div class="answer"><strong>Resposta:</strong> montante = R$ 3.781,75.</div>
+
+    <h3>Questão 4</h3>
+    <p><strong>Hoje:</strong></p>
+    <div class="formula">V<sub>0</sub> = 15000 + 12000/(1,203)<sup>7/12</sup> + 22000/(1,203)<sup>15/12</sup> = 43235,44</div>
+    <p><strong>Daqui a um ano:</strong></p>
+    <div class="formula">V<sub>1</sub> = 15000×1,203 + 12000×(1,203)<sup>5/12</sup> + 22000/(1,203)<sup>3/12</sup> = 52012,23</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 43.235,44; daqui a um ano = R$ 52.012,23.</div>
+
+    <h3>Questão 5</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 22,41% ao ano.</div>
+  </div>
+
+  <h2 id="p2017-05-31">Prova de 31/05/2017</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-11.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-11.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <p>Dados: N = R$ 20.000,00 e i = 30% a.a.</p>
+    <div class="formula">Hoje: VA = 20000 / (1 + 0,30 × 2) = 12500,00</div>
+    <div class="formula">Daqui a 1 ano: VA = 20000 / (1 + 0,30) = 15384,62</div>
+    <div class="formula">4 meses antes do vencimento: VA = 20000 / (1 + 0,30 × 4/12) = 18181,82</div>
+    <div class="answer"><strong>Resposta:</strong> hoje = R$ 12.500,00; daqui a 1 ano = R$ 15.384,62; 4 meses antes do vencimento = R$ 18.181,82.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">Desconto comercial = 12000 × 0,33 × 4/12 = 1320,00</div>
+    <div class="formula">Taxa administrativa = 12000 × 0,03 = 360,00</div>
+    <div class="formula">Desconto bancário = 1320,00 + 360,00 = 1680,00</div>
+    <div class="formula">Valor atual bancário = 12000 - 1680,00 = 10320,00</div>
+    <div class="formula">Taxa efetiva anual simples = 48,84%</div>
+    <div class="answer"><strong>Resposta:</strong> desconto bancário = R$ 1.680,00; valor atual bancário = R$ 10.320,00; taxa efetiva anual simples = 48,84%.</div>
+
+    <h3>Questão 3</h3>
+    <p>Precisamos comparar as duas alternativas na mesma data. A forma mais direta é trazer a opção parcelada para valor presente.</p>
+    <div class="formula">VP da parcela futura = 130000 / (1,065)<sup>12</sup> = 61058,77</div>
+    <div class="formula">Valor presente da opção parcelada = 130000 + 61058,77 = 191058,77</div>
+    <p>Como R$ 191.058,77 é menor que R$ 200.000,00, a opção parcelada é financeiramente melhor para o comprador.</p>
+    <div class="answer"><strong>Resposta:</strong> a melhor alternativa é pagar entrada de R$ 130.000,00 e a parcela em 1 ano.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 21,92% ao ano.</div>
+  </div>
+
+  <h2 id="p2015-04-15">Prova de 15/04/2015</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-12.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-12.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <div class="formula">M = 15000 × (1,03)<sup>24</sup> = 30491,91</div>
+    <div class="formula">VA = 30491,91 / (1 + 0,28 × 6/12) = 26747,29</div>
+    <div class="answer"><strong>Resposta:</strong> Carlos poderia aceitar aproximadamente R$ 26.747,29.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">Desconto comercial = 12300 × 0,23 × 6/12 = 1414,50</div>
+    <div class="formula">Taxa de serviço = 12300 × 0,03 = 369,00</div>
+    <div class="formula">Desconto total = 1783,50</div>
+    <div class="formula">Valor líquido = 12300 - 1783,50 = 10516,50</div>
+    <div class="formula">Taxa efetiva anual simples = 33,92%</div>
+    <div class="answer"><strong>Resposta:</strong> valor líquido recebido = R$ 10.516,50; taxa efetiva anual simples = 33,92%.</div>
+
+    <h3>Questão 3</h3>
+    <p>A própria prova já informa que a compra será daqui a 30 meses. Então aqui há duas respostas: o valor a aplicar hoje e o tempo, que já é dado no enunciado.</p>
+    <div class="formula">C = 9500 / (1,35)<sup>30/12</sup> = 4486,31</div>
+    <div class="answer"><strong>Resposta:</strong> aplicação hoje = R$ 4.486,31; tempo = 30 meses.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 26,87% ao ano.</div>
+  </div>
+
+  <h2 id="p2013-10-02">Prova de 02/10/2013</h2>
+  <div class="pdf-block">
+    <div class="pdf-meta">
+      <strong>Prova em PDF</strong>
+      <div class="muted">Visualizador da prova original antes da resolução.</div>
+      <a class="pdf-link" href="provas/primeira instancia-13.pdf" target="_blank" rel="noopener">Abrir PDF em nova aba</a>
+    </div>
+    <iframe class="pdf-frame" src="provas/primeira instancia-13.pdf#view=FitH"></iframe>
+  </div>
+  <div class="card">
+    <h3>Questão 1</h3>
+    <h4>a) R$ 2.500,00 a 33% a.a. por 7 meses</h4>
+    <div class="formula">J = 2500 × 0,33 × 7/12 = 481,25</div>
+    <div class="formula">M = 2500 + 481,25 = 2981,25</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 481,25; montante = R$ 2.981,25.</div>
+
+    <h4>b) R$ 3.000,00 a 25,5% a.a. por 2 anos e 3 meses</h4>
+    <div class="formula">J = 3000 × 0,255 × 2,25 = 1721,25</div>
+    <div class="formula">M = 3000 + 1721,25 = 4721,25</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 1.721,25; montante = R$ 4.721,25.</div>
+
+    <h4>c) R$ 2.500,00 a 3% a.m. por 3 bimestres</h4>
+    <p>3 bimestres = 6 meses.</p>
+    <div class="formula">J = 2500 × 0,03 × 6 = 450,00</div>
+    <div class="formula">M = 2500 + 450,00 = 2950,00</div>
+    <div class="answer"><strong>Resposta:</strong> juros = R$ 450,00; montante = R$ 2.950,00.</div>
+
+    <h3>Questão 2</h3>
+    <div class="formula">Desconto comercial = 11000 × 0,23 × 6/12 = 1265,00</div>
+    <div class="formula">Taxa de serviço = 11000 × 0,03 = 330,00</div>
+    <div class="formula">Desconto bancário = 1595,00</div>
+    <div class="formula">Valor líquido = 11000 - 1595 = 9405,00</div>
+    <div class="formula">Taxa efetiva anual simples = 33,92%</div>
+    <div class="answer"><strong>Resposta:</strong> desconto bancário = R$ 1.595,00; valor líquido = R$ 9.405,00; taxa efetiva anual simples = 33,92%.</div>
+
+    <h3>Questão 3</h3>
+    <div class="formula">8000 = 6350 × (1,02)<sup>t</sup></div>
+    <div class="formula">t = ln(8000/6350) / ln(1,02) = 11,66 meses</div>
+    <div class="answer"><strong>Resposta:</strong> aproximadamente 11,66 meses.</div>
+
+    <h3>Questão 4</h3>
+    <div class="answer"><strong>Resposta:</strong> TIR ≈ 7,28% ao ano.</div>
+  </div>
+
+</main>
+</body>
+</html>
