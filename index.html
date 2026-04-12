@@ -150,61 +150,74 @@ hr {
     </ul>
   </nav>
 
-  <h2 id="conceitos">Conceitos</h2>
+ <h2 id="conceitos">Conceitos</h2>
 
-  <div class="card">
-    <h3>Capital</h3>
-    <p>É o valor inicial da operação. É o ponto de partida do cálculo. Nas fórmulas, costuma aparecer como <strong>C</strong>.</p>
-  </div>
+<div class="card">
+  <h3>Capital</h3>
+  <p>É simplesmente o dinheiro inicial da conta. É o valor que você tem no começo, antes de aplicar ou emprestar.</p>
+  <p class="muted"><strong>Formal:</strong> Capital é o valor presente inicial de uma operação financeira, geralmente representado por <strong>C</strong>.</p>
+</div>
 
-  <div class="card">
-    <h3>Taxa de juros</h3>
-    <p>É o percentual cobrado ou ganho em cada período. Quando a questão diz 32% a.a., isso quer dizer 32% ao ano. Quando diz 2,5% a.m., quer dizer 2,5% ao mês.</p>
-    <div class="formula">32% = 0,32 &nbsp;&nbsp; | &nbsp;&nbsp; 2,5% = 0,025</div>
-  </div>
+<div class="card">
+  <h3>Taxa de juros</h3>
+  <p>É o quanto o dinheiro cresce (ou custa) ao longo do tempo. Tipo: “ganha 2% por mês” ou “paga 30% ao ano”.</p>
+  <p class="muted"><strong>Formal:</strong> Taxa de juros é a razão entre o juro e o capital em cada período, representada por <strong>i</strong>.</p>
+  <div class="formula">2% = 0,02 &nbsp;&nbsp; | &nbsp;&nbsp; 30% = 0,30</div>
+</div>
 
-  <div class="card">
-    <h3>Prazo</h3>
-    <p>É o tempo da operação. O ponto importante é: a unidade do tempo precisa combinar com a unidade da taxa. Se a taxa está ao ano, o tempo tem de ser convertido para anos.</p>
-  </div>
+<div class="card">
+  <h3>Prazo</h3>
+  <p>É por quanto tempo o dinheiro fica aplicado ou emprestado.</p>
+  <p>O detalhe importante: o tempo precisa estar na mesma unidade da taxa.</p>
+  <p class="muted"><strong>Formal:</strong> Prazo é o número de períodos de capitalização da operação, representado por <strong>t</strong>.</p>
+</div>
 
-  <div class="card">
-    <h3>Juro simples</h3>
-    <p>No juro simples, os juros são calculados sempre sobre o capital inicial. Então o crescimento é linear.</p>
-    <div class="formula">J = C × i × t</div>
-    <div class="formula">M = C + J</div>
-  </div>
+<div class="card">
+  <h3>Juro simples</h3>
+  <p>Aqui o crescimento é “reto”. O juro é sempre calculado só em cima do valor inicial, nunca muda a base.</p>
+  <p class="muted"><strong>Formal:</strong> No regime de juros simples, o juro é proporcional ao capital inicial, à taxa e ao tempo.</p>
+  <div class="formula">J = C × i × t</div>
+  <div class="formula">M = C + J</div>
+</div>
 
-  <div class="card">
-    <h3>Juros compostos</h3>
-    <p>Nos juros compostos, cada período incide sobre o saldo que já cresceu. Por isso o crescimento deixa de ser linear e passa a ser acumulativo.</p>
-    <div class="formula">M = C × (1 + i)<sup>t</sup></div>
-    <div class="formula">C = M / (1 + i)<sup>t</sup></div>
-  </div>
+<div class="card">
+  <h3>Juros compostos</h3>
+  <p>Aqui o dinheiro cresce sobre ele mesmo. Cada período soma juros e o próximo já usa esse valor maior.</p>
+  <p>É o famoso “juros sobre juros”.</p>
+  <p class="muted"><strong>Formal:</strong> No regime de juros compostos, os juros são incorporados ao capital a cada período, gerando crescimento exponencial.</p>
+  <div class="formula">M = C × (1 + i)<sup>t</sup></div>
+  <div class="formula">C = M / (1 + i)<sup>t</sup></div>
+</div>
 
-  <div class="card">
-    <h3>Valor nominal, valor atual e valor futuro</h3>
-    <p>Valor nominal é o valor prometido para o vencimento. Valor atual é quanto esse valor vale antes do vencimento. Valor futuro é quanto um valor de hoje se transforma depois de passar pelo regime de juros.</p>
-  </div>
+<div class="card">
+  <h3>Valor hoje vs valor no futuro</h3>
+  <p>Dinheiro hoje não vale a mesma coisa que dinheiro no futuro.</p>
+  <p>Então às vezes a gente precisa trazer valores para hoje ou levar para o futuro pra comparar corretamente.</p>
+  <p class="muted"><strong>Formal:</strong> Valor atual (ou presente) é o valor equivalente de um capital em uma data anterior; valor futuro é o valor equivalente em uma data posterior, considerando uma taxa de juros.</p>
+</div>
 
-  <div class="card">
-    <h3>Desconto comercial e desconto bancário</h3>
-    <p>Desconto é a redução do valor de um título quando ele é antecipado. No desconto comercial simples, a conta é feita diretamente sobre o valor nominal. No desconto bancário, nestas provas, aparece o desconto comercial somado à taxa de serviço.</p>
-    <div class="formula">D = N × i × t</div>
-    <div class="formula">A<sub>c</sub> = N - D = N × (1 - i × t)</div>
-  </div>
+<div class="card">
+  <h3>Desconto</h3>
+  <p>Se você recebe um dinheiro antes do prazo, ele vem menor. Esse “corte” é o desconto.</p>
+  <p class="muted"><strong>Formal:</strong> Desconto é a diferença entre o valor nominal e o valor atual de um título antecipado.</p>
+  <div class="formula">D = N × i × t</div>
+  <div class="formula">Valor recebido = N - D</div>
+</div>
 
-  <div class="card">
-    <h3>Equivalência de capitais</h3>
-    <p>Quando a questão pergunta quanto eu possuo hoje, ou daqui a um ano, o que estamos fazendo é trazer ou levar valores para uma mesma data, para poder comparar tudo corretamente.</p>
-  </div>
+<div class="card">
+  <h3>Equivalência de capitais</h3>
+  <p>Quando aparecem vários valores em tempos diferentes, você não pode somar direto.</p>
+  <p>Tem que colocar tudo na mesma data primeiro (hoje, por exemplo).</p>
+  <p class="muted"><strong>Formal:</strong> Capitais são equivalentes quando, trazidos para uma mesma data sob uma mesma taxa, possuem o mesmo valor.</p>
+</div>
 
-  <div class="card">
-    <h3>Taxa interna de retorno (TIR)</h3>
-    <p>A TIR é a taxa que zera o valor presente líquido do fluxo de caixa. Em linguagem simples: é a taxa que faz o valor de hoje das entradas ser exatamente igual ao valor da saída inicial.</p>
-    <div class="formula">0 = FC<sub>0</sub> + FC<sub>1</sub>/(1+i) + FC<sub>2</sub>/(1+i)<sup>2</sup> + ... + FC<sub>n</sub>/(1+i)<sup>n</sup></div>
-  </div>
-
+<div class="card">
+  <h3>Taxa interna de retorno (TIR)</h3>
+  <p>Pensa assim: é a taxa que faz o investimento “empatar”.</p>
+  <p>Ou seja, o que você ganha no futuro vale exatamente o que você investiu hoje.</p>
+  <p class="muted"><strong>Formal:</strong> A TIR é a taxa que zera o valor presente líquido (VPL) de um fluxo de caixa.</p>
+  <div class="formula">0 = FC₀ + FC₁/(1+i) + FC₂/(1+i)² + ...</div>
+</div>
   <h2 id="p2014-09-23">Prova de 23/09/2014</h2>
   <div class="pdf-block">
     <div class="pdf-meta">
