@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Provas Resolvidas de Matemática Financeira</title>
-
 <style>
 :root {
   --bg: #ffffff;
@@ -14,10 +13,8 @@
   --panel: #f7f7f7;
   --code: #f3f4f6;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   background: var(--bg);
@@ -25,105 +22,55 @@ body {
   font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* BOTÕES */
-<style>
-:root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --muted: #666;
-  --line: #ddd;
-  --panel: #f7f7f7;
-  --code: #f3f4f6;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-/* BOTÕES */
 .top-buttons {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 12px;
+  right: 12px;
   z-index: 1000;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #ececec;
+  padding: 0;
+  transition: transform 0.28s ease, opacity 0.28s ease;
 }
-
+.top-buttons.is-hidden {
+  transform: translateY(-18px);
+  opacity: 0;
+  pointer-events: none;
+}
 .top-buttons a {
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 700;
-  border: 1px solid transparent;
-  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, filter 0.2s ease;
   white-space: nowrap;
   line-height: 1.2;
   text-align: center;
+  backdrop-filter: blur(6px);
 }
+.top-buttons a:hover { transform: translateY(-1px); filter: brightness(0.98); }
+.btn-dre { background: rgba(216, 137, 0, 0.92); color: #fff; }
+.btn-bp { background: rgba(15, 103, 163, 0.9); color: #fff; }
 
-.top-buttons a:hover {
-  transform: translateY(-1px);
-}
-
-.btn-dre {
-  background: #d88900;
-  color: #ffffff;
-}
-
-.btn-dre:hover {
-  background: #bf7800;
-}
-
-.btn-bp {
-  background: #0f67a3;
-  color: #ffffff;
-}
-
-.btn-bp:hover {
-  background: #0c5789;
-}
-
-/* RESTO DO LAYOUT */
 main {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px 16px 64px;
 }
-
-h1, h2, h3, h4 {
-  line-height: 1.25;
-  margin: 0 0 12px;
-}
-
-h1 {
-  font-size: 1.9rem;
-  margin-top: 8px;
-}
-
+h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 12px; }
+h1 { font-size: 1.9rem; margin-top: 8px; }
 h2 {
   font-size: 1.45rem;
   margin-top: 42px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
 }
-
-h3 {
-  font-size: 1.15rem;
-  margin-top: 24px;
-}
-
+h3 { font-size: 1.15rem; margin-top: 24px; }
+h4 { font-size: 1rem; margin-top: 18px; }
 p, li { margin: 0 0 10px; }
 small, .muted { color: var(--muted); }
 
@@ -134,66 +81,152 @@ small, .muted { color: var(--muted); }
   padding: 14px;
   margin: 14px 0;
 }
-
 .formula {
   background: var(--code);
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px 12px;
   overflow-x: auto;
-  font-family: monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   margin: 10px 0;
 }
+.answer {
+  background: #fafafa;
+  border-left: 4px solid #999;
+  padding: 12px;
+  margin: 12px 0;
+}
+.statement {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid #bbb;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+.reading-note {
+  background: #fffdf5;
+  border: 1px solid #eadfb6;
+  border-left: 4px solid #d6b85f;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0 18px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+.steps { margin-top: 12px; }
+.steps p { margin-bottom: 10px; }
 
-/* MOBILE */
+nav {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 18px 0 26px;
+}
+nav ul {
+  columns: 2;
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 22px 0;
+}
+.pdf-block {
+  margin: 10px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.pdf-meta {
+  padding: 10px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.pdf-frame {
+  width: 100%;
+  height: 760px;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+.pdf-link {
+  display: inline-block;
+  margin-top: 6px;
+}
 @media (max-width: 640px) {
+  body { font-size: 15px; }
   .top-buttons {
-    flex-direction: column;
-    align-items: stretch;
+    top: 8px;
+    right: 8px;
+    left: 8px;
     gap: 8px;
-    padding: 10px 12px;
   }
-
   .top-buttons a {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 0.92rem;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 9px 10px;
+    font-size: 0.88rem;
     border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
-
   main {
-    padding: 16px 14px 56px;
+    padding: 88px 12px 56px;
   }
-
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    margin-top: 0;
+  }
+  .card,
+  nav,
+  .statement,
+  .reading-note,
+  .answer {
+    padding: 12px;
+    border-radius: 9px;
+  }
+  nav ul { columns: 1; }
+  .pdf-frame { height: 62vh; min-height: 500px; }
+}
+
+@media (max-width: 420px) {
+  .top-buttons {
+    gap: 6px;
+  }
+  .top-buttons a {
+    padding: 8px 8px;
+    font-size: 0.82rem;
+    letter-spacing: -0.01em;
+  }
+  main {
+    padding-top: 84px;
+  }
+  .pdf-frame {
+    height: 58vh;
+    min-height: 440px;
   }
 }
 </style>
 </head>
-
 <body>
-
-<!-- BOTÕES -->
-<div class="top-buttons">
+<div class="top-buttons" id="topButtons">
   <a href="dre.html" class="btn-dre">DRE</a>
   <a href="bpat.html" class="btn-bp">Balanço Patrimonial</a>
 </div>
-
 <main>
-
-<h1>Provas Resolvidas de Matemática Financeira</h1>
-
-<div class="card">
+  <h1>Provas Resolvidas de Matemática Financeira</h1>
+  <div class="card">
   <strong>📘 Livro base</strong>
   <p class="muted">Matemática Financeira — Mathias e Gomes</p>
-  <a href="matfinmathias.pdf" target="_blank">Abrir PDF do livro</a>
+  <a href="matfinmathias.pdf" target="_blank" rel="noopener">
+    Abrir PDF do livro
+  </a>
 </div>
 
-<p>Material em sequência: primeiro os conceitos, depois as provas...</p>
-
   <p>Material em sequência: primeiro os conceitos, depois as provas, uma por uma, com enunciado repetido, resolução comentada e indicação objetiva do que ler no livro.</p>
-  <p class="muted">Quando a prova manda resolver um exercício do livro, mas o enunciado desse exercício não aparece na prova, a questão fica indicada como não resolvível apenas com o material disponível.</p>
 
   <nav>
     <strong>Navegação</strong>
@@ -1142,5 +1175,27 @@ small, .muted { color: var(--muted); }
   </div>
 
 </main>
+
+<script>
+(() => {
+  const buttons = document.getElementById('topButtons');
+  let lastY = window.scrollY;
+
+  const update = () => {
+    const y = window.scrollY;
+    if (y <= 24) {
+      buttons.classList.remove('is-hidden');
+    } else if (y > lastY + 6) {
+      buttons.classList.add('is-hidden');
+    } else if (y < lastY - 6) {
+      buttons.classList.remove('is-hidden');
+    }
+    lastY = y;
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
