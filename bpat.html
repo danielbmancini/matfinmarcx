@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balanço In*s</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #f6f8f5;
+      --paper: rgba(255,255,255,0.94);
+      --ink: #243127;
+      --muted: #6b7b6d;
+      --line: #dbe6dc;
+      --title1: #203025;
+      --title2: #4c5d50;
+
+      --ativo: #3f8f5a;
+      --ativo-soft: #eef8f0;
+      --ativo-line: #cfe7d4;
+      --ativo-strong: #2f6f45;
+
+      --passivo: #c66a6a;
+      --passivo-soft: #fdf1f1;
+      --passivo-line: #f0caca;
+      --passivo-strong: #a95454;
+
+      --pl: #7ea284;
+      --pl-soft: #f3f8f3;
+      --pl-line: #d8e7d9;
+
+      --section: #526457;
+      --negative: #b54848;
+      --negative-soft: #fff4f4;
+      --highlight: #fff3bf;
+      --shadow: 0 18px 40px rgba(43, 60, 46, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(63,143,90,0.10), transparent 32%),
+        radial-gradient(circle at top right, rgba(198,106,106,0.10), transparent 28%),
+        linear-gradient(180deg, #fbfcfa 0%, #f3f6f2 100%);
+    }
+
+    .page {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 18px 16px 30px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.90));
+      border: 1px solid rgba(219,230,220,0.95);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px 18px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(63,143,90,0.05), rgba(198,106,106,0.05), rgba(126,162,132,0.04));
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      text-align: center;
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--title1);
+    }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      margin: 8px 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 0 14px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .tag.ativo { background: var(--ativo-soft); color: var(--ativo-strong); border-color: var(--ativo-line); }
+    .tag.passivo { background: var(--passivo-soft); color: var(--passivo-strong); border-color: var(--passivo-line); }
+    .tag.pl { background: var(--pl-soft); color: #5e7d63; border-color: var(--pl-line); }
+    .tag.neg { background: var(--negative-soft); color: var(--negative); border-color: #f2c3c3; }
+
+    .searchbar {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+    }
+
+    .search-input {
+      width: min(560px, 92vw);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.95);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      box-shadow: 0 8px 24px rgba(43,60,46,0.06);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #b8cab9;
+      box-shadow: 0 0 0 4px rgba(184,202,185,0.22);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      color: var(--title2);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(43,60,46,0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(43,60,46,0.10);
+    }
+
+    .btn.ativo { border-color: var(--ativo-line); color: var(--ativo-strong); background: var(--ativo-soft); }
+    .btn.passivo { border-color: var(--passivo-line); color: var(--passivo-strong); background: var(--passivo-soft); }
+    .btn.pl { border-color: var(--pl-line); color: #5e7d63; background: var(--pl-soft); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--paper);
+      border: 1px solid rgba(219,230,220,0.95);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .panel-header {
+      padding: 16px 18px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      color: white;
+    }
+
+    .panel.ativo .panel-header { background: linear-gradient(135deg, var(--ativo), #73b487); }
+    .panel.passivo .panel-header { background: linear-gradient(135deg, var(--passivo), #d69494); }
+
+    details.section,
+    details.subsection {
+      border-bottom: 1px solid #edf2ee;
+    }
+
+    details:last-child { border-bottom: 0; }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .section > summary {
+      padding: 12px 46px 12px 16px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--section);
+      background: linear-gradient(180deg, #fdfefd, #f8fbf8);
+      border-bottom: 1px solid #eef4ef;
+    }
+
+    .subsection > summary {
+      padding: 10px 42px 10px 20px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      background: #fcfefd;
+      color: #425545;
+    }
+
+    .panel.ativo .section > summary { border-left: 5px solid var(--ativo); }
+    .panel.passivo .section > summary { border-left: 5px solid var(--passivo); }
+    .pl-section > summary { border-left: 5px solid #7ea284; background: linear-gradient(180deg, #f8fcf8, #f3f8f3); }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #eef3ee;
+      color: #546756;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    details[open] > summary::after {
+      content: "–";
+    }
+
+    .items {
+      padding: 6px 0;
+    }
+
+    .item {
+      padding: 8px 18px 8px 28px;
+      font-size: 0.935rem;
+      line-height: 1.42;
+      border-top: 1px solid #f1f5f1;
+      text-align: left;
+      transition: background-color 0.2s ease;
+    }
+
+    .account-name {
+      display: inline;
+      font-size: 0.99rem;
+      font-weight: 700;
+      color: #223126;
+    }
+
+    .account-note {
+      display: inline;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .item:first-child { border-top: 0; }
+
+    .negative {
+      color: var(--negative);
+      background: linear-gradient(90deg, var(--negative-soft), transparent 80%);
+      font-weight: 600;
+    }
+
+    .match {
+      background: linear-gradient(90deg, var(--highlight), #fff9db 80%) !important;
+      border-radius: 8px;
+    }
+
+    .pl-item {
+      border-left: 3px solid transparent;
+    }
+
+    .total {
+      margin: 8px 12px 12px;
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      font-size: 0.92rem;
+    }
+
+    .panel.ativo .total { background: var(--ativo-soft); color: var(--ativo-strong); border: 1px solid var(--ativo-line); }
+    .panel.passivo .total { background: var(--passivo-soft); color: var(--passivo-strong); border: 1px solid var(--passivo-line); }
+    .pl-total { background: var(--pl-soft) !important; color: #5e7d63 !important; border: 1px solid var(--pl-line) !important; }
+
+    .search-count {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+      margin: -2px 0 10px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white; }
+      .toolbar, .legend, .footer-note, .searchbar, .search-count { display: none; }
+      .page { max-width: none; padding: 0; }
+      .hero, .panel { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>Balanço In*s</h1>
+      <p>Gerado a partir de um PDF do Marion e comentado ad hoc para os exercícios.</p>
+    </section>
+
+    <div class="searchbar">
+      <input id="accountSearch" class="search-input" type="text" placeholder="Procurar conta, termo ou sinônimo..." oninput="searchAccounts(this.value)" />
+      <button class="btn" onclick="clearSearch()">Limpar busca</button>
+    </div>
+    <div id="searchCount" class="search-count"></div>
+
+    <div class="toolbar">
+      <button class="btn ativo" onclick="toggleGroup('ativo', true)">Expandir Ativo</button>
+      <button class="btn ativo" onclick="toggleGroup('ativo', false)">Recolher Ativo</button>
+      <button class="btn passivo" onclick="toggleGroup('passivo', true)">Expandir Passivo</button>
+      <button class="btn passivo" onclick="toggleGroup('passivo', false)">Recolher Passivo</button>
+      <button class="btn pl" onclick="togglePL(true)">Expandir PL</button>
+      <button class="btn pl" onclick="togglePL(false)">Recolher PL</button>
+      <button class="btn" onclick="setAll(true)">Tudo</button>
+      <button class="btn" onclick="setAll(false)">Fechar tudo</button>
+    </div>
+
+    <section class="layout">
+      <article class="panel ativo" id="ativo-panel">
+        <div class="panel-header">ATIVO</div>
+
+        <details class="section" data-group="ativo" open>
+          <summary>ATIVO CIRCULANTE</summary>
+
+          <details class="subsection" data-group="ativo" open>
+            <summary>Disponível</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Caixa</span> <span class="account-note">(numerário, dinheiro em caixa; também chamado de disponível em espécie, funds in cash)</span></div>
+              <div class="item"><span class="account-name">Bancos</span> <span class="account-note">(depósitos bancários, conta movimento; sinônimo: “Bancos com Movimento”)</span></div>
+              <div class="item"><span class="account-name">Aplic. Financeiras de Liquidez Imediata</span> <span class="account-note">(aplicações de curtíssimo prazo)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>Créditos e Contas a Receber</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Duplicatas a Receber (Clientes)</span> <span class="account-note">(clientes, títulos a receber; também chamado de “Contas a Receber” de clientes, “Títulos a Receber (CP)”)</span></div>
+              <div class="item negative"><span class="account-name">(-) Perdas Estimadas com Créditos de Liquidação Duvidosa</span> <span class="account-note">(PCLD, provisão para inadimplência; sinônimo: “Provisão para Créditos de Liquidação Duvidosa”)</span></div>
+              <div class="item"><span class="account-name">Contas a Receber</span> <span class="account-note">(outros créditos com clientes; ex: “Clientes – Diversos”, “Duplicatas a Receber – Outros”)</span></div>
+              <div class="item"><span class="account-name">Adiantamento a Fornecedores</span> <span class="account-note">(antecipações a fornecedores)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>Impostos a Recuperar</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">ICMS a Recuperar</span> <span class="account-note">(crédito de ICMS)</span></div>
+              <div class="item"><span class="account-name">IPI a Recuperar</span> <span class="account-note">(crédito de IPI)</span></div>
+              <div class="item"><span class="account-name">PIS a Recuperar</span> <span class="account-note">(crédito de PIS)</span></div>
+              <div class="item"><span class="account-name">Cofins a Recuperar</span> <span class="account-note">(crédito de Cofins)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>Outras Contas do Circulante</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Aplicações Financeiras</span> <span class="account-note">(investimentos temporários; ex: aplicações de curto prazo)</span></div>
+              <div class="item"><span class="account-name">Estoques</span> <span class="account-note">(inclui “Mercadorias para Revenda”, “Mercadorias”, “Materiais de consumo”)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>Despesas do Exercício Seguinte</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Prêmios de Seguros</span> <span class="account-note">(seguros antecipados; ex: “Despesas de Seguros Pagos Antecipadamente”)</span></div>
+            </div>
+          </details>
+        </details>
+
+        <details class="section" data-group="ativo">
+          <summary>ATIVO NÃO CIRCULANTE</summary>
+
+          <details class="subsection" data-group="ativo" open>
+            <summary>REALIZÁVEL A LONGO PRAZO</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Títulos a Receber (LP)</span> <span class="account-note">(créditos de longo prazo; inclui “Aplicações Financeiras (LP)”)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>INVESTIMENTO</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Participações Permanentes em outras Cias</span> <span class="account-note">(coligadas/controladas; ex: “Investimentos em Ações”)</span></div>
+              <div class="item"><span class="account-name">Obras de Arte</span> <span class="account-note">(bens para valorização)</span></div>
+              <div class="item"><span class="account-name">Imóveis para Futura Utilização</span> <span class="account-note">(terrenos/imóveis não operacionais)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>IMOBILIZADO</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Terrenos</span> <span class="account-note">(lotes, glebas)</span></div>
+              <div class="item"><span class="account-name">Prédios</span> <span class="account-note">(edificações)</span></div>
+              <div class="item"><span class="account-name">Instalações</span> <span class="account-note">(benfeitorias, instalações técnicas)</span></div>
+              <div class="item"><span class="account-name">Veículos</span> <span class="account-note">(frota)</span></div>
+              <div class="item"><span class="account-name">Móveis e Utensílios</span> <span class="account-note">(mobiliário)</span></div>
+              <div class="item"><span class="account-name">Equipamento de Processamento Eletrônico de Dados</span> <span class="account-note">(computadores, hardware; ex: “Máquinas e Equipamentos de Uso”, “Equipamentos”)</span></div>
+              <div class="item negative"><span class="account-name">(-) Depreciação Acumulada</span> <span class="account-note">(depreciação do imobilizado; inclui “Depreciação Acumulada de Equipamentos” e “Depreciação Acumulada de Veículos”)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="ativo">
+            <summary>INTANGÍVEL</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Marcas e Patentes</span> <span class="account-note">(propriedade industrial)</span></div>
+              <div class="item"><span class="account-name">Sistemas Aplicativos – Software</span> <span class="account-note">(programas, licenças)</span></div>
+              <div class="item negative"><span class="account-name">(-) Amortização Acumulada</span> <span class="account-note">(amortização do intangível; ex: “Amortização Acumulada de Marcas e Patentes”)</span></div>
+            </div>
+          </details>
+
+          <div class="total">TOTAL DO ATIVO</div>
+        </details>
+      </article>
+
+      <article class="panel passivo" id="passivo-panel">
+        <div class="panel-header">PASSIVO</div>
+
+        <details class="section" data-group="passivo" open>
+          <summary>PASSIVO CIRCULANTE</summary>
+
+          <details class="subsection" data-group="passivo" open>
+            <summary>Fornecedores</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Fornecedores</span> <span class="account-note">(duplicatas a pagar, contas a pagar a fornecedores)</span></div>
+              <div class="item"><span class="account-note">Ex: também denominado “Fornecedores Nacionais”, “Contas a Pagar a Terceiros”</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="passivo">
+            <summary>Impostos e Contribuições a Recolher</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">ICMS a Recolher</span> <span class="account-note">(ICMS devido)</span></div>
+              <div class="item"><span class="account-name">IPI a Recolher</span> <span class="account-note">(IPI devido)</span></div>
+              <div class="item"><span class="account-name">IRPJ a Recolher</span> <span class="account-note">(imposto de renda a pagar)</span></div>
+              <div class="item"><span class="account-name">CSLL a Recolher</span> <span class="account-note">(contribuição social a pagar)</span></div>
+              <div class="item"><span class="account-name">PIS a Recolher</span> <span class="account-note">(PIS devido)</span></div>
+              <div class="item"><span class="account-name">Cofins a Recolher</span> <span class="account-note">(Cofins devida)</span></div>
+              <div class="item"><span class="account-name">IRRF a Recolher</span> <span class="account-note">(imposto retido na fonte)</span></div>
+              <div class="item"><span class="account-name">INSS a Recolher</span> <span class="account-note">(previdência social a pagar; inclui “Encargos Sociais a Recolher”)</span></div>
+              <div class="item"><span class="account-name">FGTS a Recolher</span> <span class="account-note">(fundo de garantia a pagar)</span></div>
+              <div class="item"><span class="account-name">Contribuições Sindicais a Recolher</span> <span class="account-note">(encargos sindicais)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="passivo">
+            <summary>Obrigações Trabalhistas e Financeiras</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Salários a Pagar</span> <span class="account-note">(sinônimo: “Salários a pagar”)</span></div>
+              <div class="item"><span class="account-name">Pro Labore a Pagar</span> <span class="account-note">(remuneração dos sócios)</span></div>
+              <div class="item"><span class="account-name">Empréstimos a Pagar</span> <span class="account-note">(dívidas bancárias CP; também chamado de “Empréstimos Bancários”)</span></div>
+            </div>
+          </details>
+
+          <details class="subsection" data-group="passivo">
+            <summary>Outras Obrigações</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Aluguéis a Pagar</span> <span class="account-note">(aluguéis vencidos; sinônimo: “Alugueis a Pagar”)</span></div>
+              <div class="item"><span class="account-name">Contas a Pagar</span> <span class="account-note">(obrigações diversas; inclui “Títulos a Pagar”, “Seguros a Pagar”)</span></div>
+              <div class="item"><span class="account-name">Energia Elétrica a Pagar</span> <span class="account-note">(conta de luz)</span></div>
+              <div class="item"><span class="account-name">Adiantamento de Clientes</span> <span class="account-note">(receitas antecipadas)</span></div>
+              <div class="item"><span class="account-name">Honorários a Pagar</span> <span class="account-note">(serviços profissionais a pagar)</span></div>
+              <div class="item"><span class="account-name">Duplicatas Descontadas</span> <span class="account-note">(antecipação de recebíveis)</span></div>
+              <div class="item negative"><span class="account-name">(-) Juros a Vencer / Encargos Financeiros a Transcorrer</span> <span class="account-note">(encargos a apropriar; ex: “Encargos Financeiros a Transcorrer – Financiamentos”)</span></div>
+            </div>
+          </details>
+        </details>
+
+        <details class="section" data-group="passivo">
+          <summary>PASSIVO NÃO CIRCULANTE</summary>
+          <details class="subsection" data-group="passivo" open>
+            <summary>EXIGÍVEL A LONGO PRAZO</summary>
+            <div class="items">
+              <div class="item"><span class="account-name">Contas a Pagar (LP)</span> <span class="account-note">(obrigações de longo prazo)</span></div>
+              <div class="item"><span class="account-name">Financiamentos a Pagar (LP)</span> <span class="account-note">(empréstimos e financiamentos LP; sinônimo: “Financiamentos (LP)”)</span></div>
+            </div>
+          </details>
+        </details>
+
+        <details class="section pl-section" data-group="pl" id="patrimonio" open>
+          <summary>PATRIMÔNIO LÍQUIDO</summary>
+          <div class="items">
+            <div class="item pl-item"><span class="account-name">Capital Social</span> <span class="account-note">(capital próprio dos sócios; também chamado de “Capital”)</span></div>
+            <div class="item pl-item"><span class="account-name">Capital Subscrito</span> <span class="account-note">(capital comprometido)</span></div>
+            <div class="item pl-item negative"><span class="account-name">(-) Capital a Integralizar</span> <span class="account-note">(parcela ainda não realizada)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva de Capital</span> <span class="account-note">(ágio e outras reservas)</span></div>
+            <div class="item pl-item"><span class="account-name">Ajustes de Avaliação Patrimonial</span> <span class="account-note">(AAP, ajustes a valor justo)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva de Lucros</span> <span class="account-note">(lucros retidos; inclui “Reservas de lucros”, “Lucros Acumulados”)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva Legal</span> <span class="account-note">(reserva obrigatória)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva Estatutária</span> <span class="account-note">(reserva prevista no estatuto)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva para Contingência</span> <span class="account-note">(reserva para perdas prováveis)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva de Lucros a Realizar</span> <span class="account-note">(lucros ainda não realizados financeiramente)</span></div>
+            <div class="item pl-item"><span class="account-name">Reserva de Lucros para Expansão</span> <span class="account-note">(retenção para investimentos)</span></div>
+            <div class="item pl-item negative"><span class="account-name">(-) Ações em Tesouraria</span> <span class="account-note">(ações próprias em carteira; ex: “Ações de Emissão Própria em Tesouraria”)</span></div>
+            <div class="item pl-item negative"><span class="account-name">(-) Prejuízos Acumulados</span> <span class="account-note">(saldo negativo acumulado; quando positivo, chamado de “Lucros Acumulados”)</span></div>
+            <div class="total pl-total">TOTAL DO PASSIVO + PL</div>
+          </div>
+        </details>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    function setAll(open) {
+      document.querySelectorAll('details').forEach(d => d.open = open);
+    }
+
+    function toggleGroup(group, open) {
+      document.querySelectorAll(`details[data-group="${group}"]`).forEach(d => d.open = open);
+    }
+
+    function togglePL(open) {
+      document.querySelectorAll('details[data-group="pl"]').forEach(d => d.open = open);
+    }
+
+    function openParents(el) {
+      let node = el.parentElement;
+      while (node) {
+        if (node.tagName && node.tagName.toLowerCase() === 'details') {
+          node.open = true;
+        }
+        node = node.parentElement;
+      }
+    }
+
+    function searchAccounts(term) {
+      const query = term.trim().toLowerCase();
+      const items = document.querySelectorAll('.item');
+      const count = document.getElementById('searchCount');
+      let matches = 0;
+      let firstMatch = null;
+
+      items.forEach(item => {
+        item.classList.remove('match');
+        if (!query) return;
+        if (item.textContent.toLowerCase().includes(query)) {
+          item.classList.add('match');
+          openParents(item);
+          matches++;
+          if (!firstMatch) firstMatch = item;
+        }
+      });
+
+      if (!query) {
+        count.textContent = '';
+        return;
+      }
+
+      count.textContent = matches === 0
+        ? 'Nenhuma conta encontrada.'
+        : `${matches} ocorrência${matches > 1 ? 's' : ''} encontrada${matches > 1 ? 's' : ''}.`;
+
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('accountSearch');
+      input.value = '';
+      searchAccounts('');
+      input.focus();
+    }
+  </script>
+</body>
+</html>
