@@ -286,32 +286,143 @@ hr {
 
 <div class="card">
   <h3>Valor hoje vs valor no futuro</h3>
-  <p>Dinheiro hoje não vale a mesma coisa que dinheiro no futuro.</p>
-  <p>Então às vezes a gente precisa trazer valores para hoje ou levar para o futuro pra comparar corretamente.</p>
-  <p class="muted"><strong>Formal:</strong> Valor atual (ou presente) é o valor equivalente de um capital em uma data anterior; valor futuro é o valor equivalente em uma data posterior, considerando uma taxa de juros.</p>
+
+  <p>
+    Dinheiro hoje e dinheiro no futuro não têm o mesmo peso, porque o tempo altera o valor do dinheiro.
+    Quem recebe hoje pode aplicar, pagar uma dívida, comprar algo agora ou evitar juros.
+  </p>
+
+  <p>
+    Por isso, em matemática financeira, sempre perguntamos:
+    <strong>em que data esse valor está?</strong>
+  </p>
+
+  <p>
+    Um valor de R$ 1.000,00 hoje não é automaticamente igual a R$ 1.000,00 daqui a um ano.
+    Se existe uma taxa de juros, o dinheiro muda de valor conforme o tempo passa.
+  </p>
+
+  <p>
+    Quando levamos um valor de hoje para uma data futura, estamos calculando o
+    <strong>valor futuro</strong>. Quando trazemos um valor futuro para uma data anterior,
+    estamos calculando o <strong>valor atual</strong> ou <strong>valor presente</strong>.
+  </p>
+
+  <p class="muted">
+    <strong>Formal:</strong> Valor atual (VA) é o valor equivalente de um capital em uma data anterior.
+    Valor futuro (VF) é o valor equivalente em uma data posterior, considerando uma taxa de juros.
+  </p>
+
+  <div class="formula">VF = VA × (1 + i × t)</div>
+  <div class="formula">VF = VA × (1 + i)<sup>t</sup></div>
+  <div class="formula muted">VA = valor atual | VF = valor futuro | i = taxa de juros | t = tempo</div>
 </div>
 
 <div class="card">
   <h3>Desconto</h3>
-  <p>Se você recebe um dinheiro antes do prazo, ele vem menor. Esse “corte” é o desconto.</p>
-  <p class="muted"><strong>Formal:</strong> Desconto é a diferença entre o valor nominal e o valor atual de um título antecipado.</p>
+
+  <p>
+    Desconto ocorre quando um valor que seria recebido no futuro é antecipado.
+    Como o dinheiro vem antes do prazo, o valor pago é menor.
+  </p>
+
+  <p>
+    O valor original é o <strong>valor nominal</strong> (N) e o valor recebido hoje é o
+    <strong>valor atual</strong> (A). A diferença entre eles é o desconto (D).
+  </p>
+
+  <p>
+    Na prática, existem duas formas principais de calcular esse desconto:
+    <strong>por fora</strong> (comercial/bancário) e <strong>por dentro</strong> (racional).
+  </p>
+
+  <p>
+    👉 No <strong>desconto comercial (bancário ou por fora)</strong>, o desconto é calculado
+    diretamente sobre o valor nominal. É o mais usado em bancos.
+  </p>
+
   <div class="formula">D = N × i × t</div>
-  <div class="formula">Valor recebido = N - D</div>
+  <div class="formula">A = N - D</div>
+
+  <p>
+    👉 No <strong>desconto racional (por dentro)</strong>, o cálculo é feito trazendo o valor
+    futuro para o presente, como em juros. O desconto é a diferença depois disso.
+  </p>
+
+  <div class="formula">A = N / (1 + i × t)</div>
+  <div class="formula">D = N - A</div>
+
+  <p>
+    ⚠️ Observação importante: para a mesma taxa e tempo, o desconto comercial gera um desconto maior
+    (ou seja, você recebe menos) do que o desconto racional.
+  </p>
+
+  <p class="muted">
+    <strong>Formal:</strong> Desconto é a diferença entre o valor nominal (N) de um título
+    e seu valor atual (A), quando antecipado. Pode ser calculado pelo método comercial
+    (por fora) ou racional (por dentro).
+  </p>
+
+  <div class="formula muted">
+    N = valor nominal | A = valor atual | D = desconto | i = taxa | t = tempo
+  </div>
 </div>
 
 <div class="card">
   <h3>Equivalência de capitais</h3>
-  <p>Quando aparecem vários valores em tempos diferentes, você não pode somar direto.</p>
-  <p>Tem que colocar tudo na mesma data primeiro (hoje, por exemplo).</p>
-  <p class="muted"><strong>Formal:</strong> Capitais são equivalentes quando, trazidos para uma mesma data sob uma mesma taxa, possuem o mesmo valor.</p>
+
+  <p>
+    Valores em datas diferentes não podem ser comparados diretamente.
+    É necessário trazer todos para uma mesma data (data focal).
+  </p>
+
+  <p>
+    Depois de ajustados pela mesma taxa, se forem iguais, são equivalentes.
+  </p>
+
+  <p class="muted">
+    <strong>Formal:</strong> Capitais são equivalentes quando, levados para a mesma data
+    sob a mesma taxa, possuem o mesmo valor.
+  </p>
+
+  <div class="formula">Valor na data focal A = Valor na data focal B</div>
 </div>
 
 <div class="card">
   <h3>Taxa interna de retorno (TIR)</h3>
-  <p>Pensa assim: é a taxa que faz o investimento “empatar”.</p>
-  <p>Ou seja, o que você ganha no futuro vale exatamente o que você investiu hoje.</p>
-  <p class="muted"><strong>Formal:</strong> A TIR é a taxa que zera o valor presente líquido (VPL) de um fluxo de caixa.</p>
-  <div class="formula">0 = FC₀ + FC₁/(1+i) + FC₂/(1+i)² + ...</div>
+
+  <p>
+    Primeiro: fluxo de caixa é a sequência de entradas e saídas de dinheiro ao longo do tempo.
+  </p>
+
+  <p>
+    Exemplo: você investe hoje (saída) e recebe valores no futuro (entradas).
+    Isso forma um fluxo de caixa.
+  </p>
+
+  <p>
+    A TIR é a taxa que faz esse fluxo “se equilibrar”, ou seja,
+    quando trazemos todos os valores para hoje, o resultado dá zero.
+  </p>
+
+  <p>
+    Em outras palavras: é a taxa que iguala o valor investido com o valor recebido,
+    considerando o tempo.
+  </p>
+
+  <p class="muted">
+    <strong>Formal:</strong> A TIR é a taxa i que zera o valor presente líquido (VPL)
+    de um fluxo de caixa.
+  </p>
+
+  <div class="formula">0 = FC₀ + FC₁/(1+i) + FC₂/(1+i)² + ... + FCₙ/(1+i)ⁿ</div>
+  <div class="formula">∑ (FC<sub>t</sub> / (1+i)<sup>t</sup>) = 0</div>
+
+  <div class="formula muted">
+    FCₜ = fluxo de caixa no tempo t (entrada positiva, saída negativa) |
+    i = taxa de retorno |
+    t = período (tempo)
+  </div>
 </div>
   <h2 id="p2014-09-23">Prova de 23/09/2014</h2>
   <div class="pdf-block">
