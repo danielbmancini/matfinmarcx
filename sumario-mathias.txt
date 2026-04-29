@@ -1,0 +1,145 @@
+Sumário
+Apresentação, xiii
+Parte 1- Juros Simples, 1
+1 Juro e montante, 3
+1 Introdução, 3
+2 Definições, 5
+2.1 Taxa de juros, 5
+2.1.1 Forma percentual, 5
+2.1.2 Forma unitária, 6
+3 Cálculo do juro, 6
+4 Montante, 9
+5 Taxa proporcional, 1 O
+6 Taxa equivalente, 12
+7 Períodos não-inteiros, 13
+8 Juro exato e juro comercial, 15
+8.1 Juro exato, 15
+8.2 Juro comercial, 16
+9 Valor nominal e valor atual, 16
+9.1 Diagramas de capital no tempo, 16
+9.2 Valor nominal, 18
+9.3 Valor atual, 19
+9.4 Valor futuro, 23
+viii Matemá t ica Fi na nceira • M athias e Gomes
+1O Exercícios resolvidos, 24
+11 Exercícios propostos, 41
+2 Descontos, 43
+1 Desconto racional ou desconto "por dentro", 43
+2 Desconto comercial ou desconto "por fora", 46
+2.1 Desconto bancário, 48
+3 Taxa de juros efetiva, 50
+4 Relação entre desconto racional e comercial, 54
+5 Exercícios resolvidos, 55
+6 Exercícios propostos, 75
+Parte li - Juros Compostos, 79
+3 Juro e montante, 81
+Diferença entre os regimes de capitalização, 81
+2 Montante, 82
+3 Cálculo do juro, 84
+4 Valor atual e valor nominal, 85
+5 Taxas equivalentes, 88
+6 Períodos não-inteiros, 91
+6.1 Convenção exponencial, 91
+7 Taxa efetiva e taxa nomina l: quando o período de capitalização não coincide com
+o período da taxa, 93
+8 Exercícios resolvidos, 97
+9 Exercícios propostos, 121
+Apêndice, 126
+1 Taxas equivalentes em períodos quaisquer, 126
+2 Potenciação a expoentes fracionários, 128
+4 Equivalência de capitais, 132
+1 Definições, 132
+1.1 Data focal, 132
+1.2 Equação de valor, 133
+2 Capitais equivalentes, 134
+3 Valor atual de um conjunto de capitais, 137
+4 Conjuntos equivalentes de capitais, 140
+5 Exercícios resolvidos, 142
+6 Exercícios propostos, 154
+Su má rio ix
+Apêndice, 157
+1 Equivalência de capitais em datas quaisquer sob o critério de juros compostos,
+157
+2 Valor atual e taxa de retorno, 159
+3 Comparação entre o valor atual e a taxa de retorno, 164
+Parte Ili - Anu idades e Empréstimos, 181
+5 Rendas certas ou anuidades, 183
+1 Definições, 184
+2 Classificação das anuidades, 184
+2.1 Quanto ao prazo, 184
+2.2 Quanto ao valor dos termos, 184
+2.3 Quanto à forma de pagamento ou de recebimento, 185
+2.4 Quanto à periodicidade, 185
+2.5 Quadro-resumo, 185
+3 Modelo básico de anuidade, 185
+3.1 Introdução, 185
+3.2 Valor atual do modelo básico, 187
+3.3 Montante do modelo básico, 195
+3.4 Relação entre os fatores a-, e .,,_,_, 198ni, nlt
+4 Exercícios resolvidos, 200
+5 Exercícios propostos, 228
+Apêndice, 234
+1 Relação adicional entre os fatores <1,;i; e 4í,J;• 234
+2 Anuidades antecipadas, 234
+2.1 Valor atual, 235
+2.2 Montante, 236
+3 Sistema ou Tabela Price, 237
+6 Modelos genéricos de anuidades, 239
+1 Anuidades diferidas, 239
+2 Anuidade em que o período dos termos não coincide com aquele a que se refere
+a taxa, 241
+3 Anuidade com termos constantes, segundo o modelo básico, mais parcelas inter-
+mediárias iguais, 243
+4 Anuidade composta por duas anuidades diferidas em seqüência, 245
+5 Anuidades perpétuas, 247
+6 Anuidades variáveis, 248
+7 Exercícios resolvidos, 249
+8 Exercícios propostos, 273
+X Matemática Finan cei ra • Mathias e Gomes
+Apêndice, 277
+1 Anuidades diferidas, 277
+1.1 Anuidades diferidas postecipadas, 277
+1.1.1 Valor atual, 277
+1 .1 .2 Montante, 279
+1 .2 Anuidades diferidas antecipadas, 279
+1.2.1 Valor atual, 279
+1.2.2 Montante, 280
+2 Anuidades perpétuas, 280
+3 Anuidades variáveis, 281
+4 Anuidade variável periódica e não periódica, 282
+7 Empréstimos, 283
+1 Definições, 284
+2 Classificação das modalidades de amortização, 285
+2.1 Sistema de amortização constante (SAC), 286
+2.1.1 SAC, com prazo de carência e prazo de utilização unitário, 287
+2.1.2 SAC, com prazo de carência, juros capitalizados e prazo de utilização
+unitário, 288
+2.1.3 SAC, com prazo de carência e prazo de utilização não-unitário, 290
+2.2 Sistema Francês (SF), 291
+2.2.1 SF, com prazo de utilização unitário e sem prazo de carência, 291
+2.2.2 SF, com prazo de utilização unitário e com prazo de carência, 292
+2.2.3 SF, quando o período a que se refere a taxa de juros não coincide com
+o período a que se refere a amortização, 294
+2.2.3.1 Planilha Calculada com a Taxa Efetiva, 294
+2.2.3.2 Sistema Price, 295
+2.3 Sistema Americano (SA), 297
+2.3.1 SA, com devolução dos juros durante a carência, 297
+2.3.2 SA, com a capitalização dos juros, 298
+2.3.3 Sinking fund, 298
+2.4 Sistema de amortizações variáveis, 301
+3 Custo efetivo de um empréstimo, 302
+4 Exercícios resolvidos, 306
+5 Exercícios propostos, 335
+Parte IV - Inflação, 345
+8 Taxa de juros aparente, taxa de juros real, 347
+1 Caracterização, 347
+1.1 Inflação e deflação, 347
+2 Índices de preços, 348
+2.1 O que é um índice de preços, 348
+2.2 Como usar um índice de preços, 350
+3 Taxa de juros aparente e real, 353
+3.1 Aplicações, 356
+3.1.1 Aplicações de curto e médio prazos, 356
+3.1.2 Médio/longo prazos, 358
+4 Exercícios resolvidos, 361
+5 Exercícios propostos, 382
